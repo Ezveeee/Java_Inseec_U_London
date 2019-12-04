@@ -17,31 +17,22 @@ public class Account {
     private static String query;
     //______________________________
     
-    
     // Constructors
-    public Account(String email, String password){
-        
-        this.email = email;
-        this.password = password;
-    }
-    
     public Account(String email, String password, String telephoneNumber, Address houseAddress){
         
-        this.email = email;
-        this.password = password;
-        this.telephoneNumber = telephoneNumber;
-        this.houseAddress = houseAddress;
+        query = "SELECT * FROM Account WHERE ID = (SELECT IDENT_CURRENT('Account')) + 1";
+        if(MySQL.getIntAndExceptionHandling(query) != -1){
+            this.accountID = MySQL.getIntAndExceptionHandling(query);
+            this.email = email;
+            this.password = password;
+            this.telephoneNumber = telephoneNumber;
+            this.houseAddress = houseAddress;
+        }
     }
     //______________________________
     
     
-    // Methods
-    public void addIDToAccount(){
-        
-        // this.accountID = récupérer avec une requête la valeur de l'ID en cherchant le mail correspondant
-    }
-    
-    
+    // Methods    
     public void registerAccount(){
         
         this.houseAddress.registerAddress();
