@@ -1,4 +1,4 @@
-package london.Screen;
+package GUI;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -53,7 +53,7 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
+        Main_page main = new Main_page();
         setVisible(false);
         dispose();
         

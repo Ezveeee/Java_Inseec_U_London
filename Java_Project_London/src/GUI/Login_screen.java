@@ -1,4 +1,4 @@
-package london.Screen;
+package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

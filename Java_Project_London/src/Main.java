@@ -1,5 +1,5 @@
 import london.recruitmentsystem.*;
-import london.Screen.*;
+import GUI.*;
 import java.util.Date;
 import javax.swing.*;
 public class Main {

@@ -1,4 +1,4 @@
-package london.Screen;
+package GUI;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -42,7 +42,7 @@ private class bt1Listener implements ActionListener
     {
         setVisible(false);
         dispose();
-        Register rg = new Register(true);
+        Register_JobSeeker rg = new Register_JobSeeker();
     }
 }
   
@@ -52,7 +52,7 @@ private class bt2Listener implements ActionListener
     {
         setVisible(false);
         dispose();
-        Register rg = new Register(false);
+        Register_Company rc = new Register_Company();
     }
 }
 }
