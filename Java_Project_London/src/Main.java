@@ -1,4 +1,5 @@
 import london.recruitmentsystem.*;
+import GUI.*;
 
 public class Main {
 
@@ -19,6 +20,7 @@ public class Main {
         
         inputCompany.registerCompany();
         
+        Login_screen lng = new Login_screen();
     }
     
 }
