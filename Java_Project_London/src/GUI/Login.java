@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 public class Login extends JFrame {
     
+    final private JPanel jp = new JPanel();
     final private JButton lgn = new JButton("Login");
     final private JTextField e_mail = new JTextField(10);
     final private JTextField password = new JTextField(10);
@@ -28,7 +29,6 @@ public class Login extends JFrame {
         setSize(LARGEUR_SCREEN,HAUTEUR_SCREEN);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container frame = getContentPane();
-        JPanel jp = new JPanel();
         jp.setLayout(null);
         
         lgn.addActionListener(new Login.bt1Listener());
@@ -53,9 +53,18 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        Main_page main = new Main_page();
-        setVisible(false);
-        dispose();
+        
+                    System.out.print(e_mail.getText());
+
+        if (e_mail.getText().equals("thom.ferrier@gmail.com") && password.getText().equals("Bleudywind"))
+        {
+            Main_page main = new Main_page();
+            setVisible(false);
+            dispose();
+            System.out.print(password.getText());
+        }
+        
+        
         
     }
 }

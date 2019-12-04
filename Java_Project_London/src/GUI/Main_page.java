@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 
 public class Main_page extends JFrame {
     
-    final private JButton lgn = new JButton("Profile");
+    final private JButton profil = new JButton("Profile");
     final private JButton bt2 = new JButton("🔎");
     final private JTextField Search = new JTextField(10);
     final private JLabel Search_txt = new JLabel("Search a Job");
@@ -31,11 +31,11 @@ public class Main_page extends JFrame {
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        lgn.addActionListener(new bt1Listener());
+        profil.addActionListener(new bt1Listener());
         bt2.addActionListener(new bt2Listener());
 
         
-        lgn.setBounds(9*LARGEUR_SCREEN/10-100/2, HAUTEUR_SCREEN/10-50/2, 200, 50);
+        profil.setBounds(9*LARGEUR_SCREEN/10-100/2, HAUTEUR_SCREEN/10-50/2, 200, 50);
         bt2.setBounds(LARGEUR_SCREEN/2+100, 3*HAUTEUR_SCREEN/5-30, 70, 20);
         Search.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-30, 200, 20);
         Search_txt.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-50, 200, 20);
@@ -43,7 +43,7 @@ public class Main_page extends JFrame {
         jp.add(bt2);
         jp.add(Search_txt);
         jp.add(Search);
-        jp.add(lgn);
+        jp.add(profil);
         add(jp);
         setVisible(true);
     }
@@ -53,9 +53,7 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
-        setVisible(false);
-        dispose();
+        Profil p = new Profil();
         
     }
 }
