@@ -92,4 +92,9 @@ public class MySQL {
         return id;
     }
     
+    
+    public static String getStringAndExceptionHandling(String query){
+        return "";
+    }
+    
 }

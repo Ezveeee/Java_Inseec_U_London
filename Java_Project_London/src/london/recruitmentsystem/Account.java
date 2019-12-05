@@ -42,6 +42,17 @@ public class Account {
         MySQL.insertDataAndExceptionHandling(query);
     }
     
+    public static boolean checkLogin(){
+        
+        query = 
+        if(){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+            
     
     public int getAccountID(){
         

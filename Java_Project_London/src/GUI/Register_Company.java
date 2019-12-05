@@ -1,4 +1,5 @@
 package GUI;
+import london.recruitmentsystem.*;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -98,6 +99,11 @@ private class bt1Listener implements ActionListener
         
         setVisible(false);
         dispose();
+        //récupérer les text field et les utiliser pour les insérer dans la BDD
+        //--> créer une addresse
+        //--> créer un account avec l'addresse
+        //--> créer une company avec l'account
+        //--> lacompanie.registerCompany();    pour insérer dans la BDD
         Main_page main = new Main_page();
         
     }

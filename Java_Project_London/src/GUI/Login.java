@@ -56,7 +56,7 @@ private class bt1Listener implements ActionListener
         
                     System.out.print(e_mail.getText());
 
-        if (e_mail.getText().equals("thom.ferrier@gmail.com") && password.getText().equals("Bleudywind"))
+        if(e_mail.getText().equals("thom.ferrier@gmail.com") && password.getText().equals("Bleudywind"))
         {
             Main_page main = new Main_page();
             setVisible(false);
