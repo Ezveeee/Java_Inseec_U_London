@@ -30,11 +30,11 @@ public class Jobseeker {
         
         this.account.registerAccount();
         
+        this.curriculumVitae.registerCV();
+        
         query = "INSERT INTO Jobseeker VALUES (" + this.account.getAccountID() +", " + this.curriculumVitae.getCVID() + ", "
                         + this.account.getTelephoneNumber() + ", " + this.account.getHouseAddress().getAddressID() + ");"; 
         MySQL.insertDataAndExceptionHandling(query);
-        
-        this.curriculumVitae.registerCV();
         
     }
     

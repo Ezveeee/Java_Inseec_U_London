@@ -42,18 +42,17 @@ public class Account {
         MySQL.insertDataAndExceptionHandling(query);
     }
     
-    public static boolean checkLogin(){
+    public  boolean checkLogin(String email, String password){
         
-        query = 
-        if(){
-            return true;
+        boolean rightPassword = false;
+        String correspondingPassword = "SELECT password FROM  Account WHERE email='" + email + "';";
+        if(password.equals(correspondingPassword)){
+            rightPassword = true;
         }
-        else{
-            return false;
-        }
+        return rightPassword;
     }
-            
     
+        
     public int getAccountID(){
         
         return this.accountID;

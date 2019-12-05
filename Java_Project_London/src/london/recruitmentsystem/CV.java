@@ -32,7 +32,9 @@ public class CV {
     
     // Methods
     public void registerCV(){
-    
+        query = "INSERT INTO CV VALUES (NULL, " + this.birthDate + ", " + this.firstName + ", "
+                        + this.lastName + ");"; 
+        MySQL.insertDataAndExceptionHandling(query);
     }
     
     
