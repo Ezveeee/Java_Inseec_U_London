@@ -62,16 +62,27 @@ public class MySQL {
     
     
     public static int getIntAndExceptionHandling(String query){
-        int id = -1;
+        int number = -1;
         try{
             stmt = MySQL.conn.createStatement();
-            id = rs.getInt(query);
+            rs = MySQL.stmt.executeQuery(query);
+            try{
+                rs.next();
+                number = rs.getInt(1);
+            }
+            catch(SQLException e) {
+                System.out.println("SQLException: " + e.getMessage());
+                System.out.println("SQLState: " + e.getSQLState());
+                System.out.println("VendorError: " + e.getErrorCode());
+            }
         }
+        
         catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+        
         finally{ //realease resources
             if(rs != null){
                 try{
@@ -89,12 +100,50 @@ public class MySQL {
                 stmt = null;
             }
         }
-        return id;
+        return number;
     }
     
     
-    public static String getStringAndExceptionHandling(String query){
-        return "";
+     public static String getStringAndExceptionHandling(String query){
+        String str = null;
+        try{
+            stmt = MySQL.conn.createStatement();
+            rs = MySQL.stmt.executeQuery(query);
+            try{
+                rs.next();
+                str = rs.getString(1);
+            }
+            catch(SQLException e) {
+                System.out.println("SQLException: " + e.getMessage());
+                System.out.println("SQLState: " + e.getSQLState());
+                System.out.println("VendorError: " + e.getErrorCode());
+            }
+        }
+        
+        catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        
+        finally{ //realease resources
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){}
+                rs = null;
+                }
+            
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){}
+                stmt = null;
+            }
+        }
+        return str;
     }
     
 }

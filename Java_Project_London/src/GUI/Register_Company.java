@@ -99,18 +99,14 @@ private class bt1Listener implements ActionListener
         
         setVisible(false);
         dispose();
+        
         Address company_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
         Account company_account = new Account(e_mail.getText(), password.getText(), phone.getText(), company_address);
         Company company = new Company (company_account, firstName.getText());
-
-        company.registerCompany();
-        //récupérer les text field et les utiliser pour les insérer dans la BDD
-        //--> créer une addresse
-        //--> créer un account avec l'addresse
-        //--> créer une company avec l'account
-        //--> lacompanie.registerCompany();    pour insérer dans la BDD
-        Main_page main = new Main_page();
         
+        company.registerCompany();
+        
+        Main_page main = new Main_page();
     }
 }
 }

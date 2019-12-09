@@ -25,17 +25,12 @@ public class Jobseeker {
     
     // Methods
     public void registerJobseeker(){
-        
         this.account.getHouseAddress().registerAddress();
-        
         this.account.registerAccount();
-        
         this.curriculumVitae.registerCV();
-        
         query = "INSERT INTO Jobseeker VALUES (" + this.account.getAccountID() +", " + this.curriculumVitae.getCVID() + ", "
                         + this.account.getTelephoneNumber() + ", " + this.account.getHouseAddress().getAddressID() + ");"; 
         MySQL.insertDataAndExceptionHandling(query);
-        
     }
     
     

@@ -18,8 +18,7 @@ public class Company {
     
     // Constructors
     public Company(Account account, String name){
-        
-        this.account = new Account(account);
+        this.account = new Account(account, account.getHouseAddress());
         this.name = name;
     }
     //______________________________
@@ -27,13 +26,15 @@ public class Company {
     
     // Methods 
     public void registerCompany(){
-        
-        this.account.registerAccount();        
-        
-        query = "INSERT INTO Company VALUES (" + this.account.getAccountID() +", " + this.name + ");";
+        this.account.registerAccount();       
+        query = "INSERT INTO Company VALUES ((SELECT id FROM Account WHERE id=" + this.account.getAccountID() +"), '" + this.name + "', NULL);";
         MySQL.insertDataAndExceptionHandling(query);
-        }
+    }
     
+    
+    public Account getAccount(){
+        return this.account;
+    }
     
     
     public void changeDescription(){

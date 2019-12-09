@@ -19,10 +19,9 @@ public class Account {
     
     // Constructors
     public Account(String email, String password, String telephoneNumber, Address houseAddress){
-        
-        query = "SELECT * FROM Account WHERE ID = (SELECT IDENT_CURRENT('Account')) + 1";
+        query = "SELECT * FROM Account WHERE id = (SELECT MAX(id) FROM Account);";
         if(MySQL.getIntAndExceptionHandling(query) != -1){
-            this.accountID = MySQL.getIntAndExceptionHandling(query);
+            this.accountID = MySQL.getIntAndExceptionHandling(query) + 1;
             this.email = email;
             this.password = password;
             this.telephoneNumber = telephoneNumber;
@@ -30,30 +29,28 @@ public class Account {
         }
     }
     
-    public Account(Account account){
+    public Account(Account account, Address houseAddress){
         this.accountID = account.accountID;
         this.email = account.email;
         this.password = account.password;
         this.telephoneNumber = account.telephoneNumber;
-        this.houseAddress = new Address(account.houseAddress);
+        this.houseAddress = new Address(houseAddress);
     }
     //______________________________
     
     
     // Methods    
     public void registerAccount(){
-        
         this.houseAddress.registerAddress();
-        
-        query = "INSERT INTO Account VALUES (NULL, " + this.email + ", " + this.password + ", "
-                        + this.telephoneNumber + ", " + this.houseAddress.getAddressID() + ");"; 
+        query = "INSERT INTO Account VALUES (NULL, '" + this.email + "', '" + this.password + "', '"
+                        + this.telephoneNumber + "', (SELECT id FROM Address WHERE id=" + this.houseAddress.getAddressID() + "));"; 
         MySQL.insertDataAndExceptionHandling(query);
     }
     
     public static boolean checkLogin(String email, String password){
-        
         boolean rightPassword = false;
-        String correspondingPassword = "SELECT password FROM  Account WHERE email='" + email + "';";
+        query = "SELECT password FROM  Account WHERE email='" + email + "';";
+        String correspondingPassword = MySQL.getStringAndExceptionHandling(query);
         if(password.equals(correspondingPassword)){
             rightPassword = true;
         }
@@ -62,31 +59,26 @@ public class Account {
     
         
     public int getAccountID(){
-        
         return this.accountID;
     }
     
     
     public String getEmail(){
-        
         return this.email;
     }
     
     
     public String getPassword(){
-        
         return this.password;
     }
     
     
     public String getTelephoneNumber(){
-        
         return this.telephoneNumber;
     }
     
     
     public Address getHouseAddress(){
-        
         return this.houseAddress;
     }
     //______________________________
