@@ -39,19 +39,23 @@ public class CV extends JFrame {
         Save.addActionListener(new bt1Listener());
         
         Save.setBounds(LARGEUR_SCREEN/2-125/2, 9*HAUTEUR_SCREEN/10 - 20, 125, 20);
-        overview_txt.setBounds(50, 30, 200, 20);
+        overview_txt.setBounds(50, 10, 200, 20);
         overview.setBounds(50, 30, 300, 200);
         education.setBounds(50, 260, 300, 200);
-        education_txt.setBounds(50, 30, 200, 20);
+        education_txt.setBounds(50, 240, 200, 20);
         workExperience.setBounds(450, 30, 300, 200);
-        workExperience_txt.setBounds(50, 30, 300, 200);
+        workExperience_txt.setBounds(450, 10, 200, 20);
         skills.setBounds(450, 260, 300, 200);
-        skills_txt.setBounds(50, 30, 300, 200);
+        skills_txt.setBounds(450, 240, 200, 20);
         
         jp.add(overview);
         jp.add(education);
         jp.add(workExperience);
         jp.add(skills);
+        jp.add(overview_txt);
+        jp.add(education_txt);
+        jp.add(workExperience_txt);
+        jp.add(skills_txt);
         jp.add(Save);
         add(jp);
         setVisible(true);
@@ -62,10 +66,9 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
-               
-        
-        
+             
+        setVisible(false);
+        dispose();
         
     }
 }
