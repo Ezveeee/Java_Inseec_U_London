@@ -19,7 +19,7 @@ public class Company {
     // Constructors
     public Company(Account account, String name){
         
-        this.account = new Account(account.getEmail(), account.getPassword(), account.getTelephoneNumber(), account.getHouseAddress());
+        this.account = new Account(account);
         this.name = name;
     }
     //______________________________

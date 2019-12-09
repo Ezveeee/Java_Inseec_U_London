@@ -30,6 +30,14 @@ public class Address{
             this.country = country;
         }
     }
+    
+    public Address(Address address){
+        this.addressID = address.addressID;
+        this.street = address.street;
+        this.postCode = address.postCode;
+        this.city = address.city;
+        this.country = address.country;
+    }
     //______________________________
     
     

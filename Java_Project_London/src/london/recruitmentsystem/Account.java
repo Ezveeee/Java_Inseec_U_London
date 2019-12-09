@@ -29,6 +29,14 @@ public class Account {
             this.houseAddress = new Address(houseAddress.getStreet(), houseAddress.getPostCode(), houseAddress.getCity(), houseAddress.getCountry());
         }
     }
+    
+    public Account(Account account){
+        this.accountID = account.accountID;
+        this.email = account.email;
+        this.password = account.password;
+        this.telephoneNumber = account.telephoneNumber;
+        this.houseAddress = new Address(account.houseAddress);
+    }
     //______________________________
     
     
