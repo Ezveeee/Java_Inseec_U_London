@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         MySQL.obtainConnection();
-        String inputStreet = "";
+       /* String inputStreet = "";
         String inputPostCode = "";
         String inputCity = "";
         String inputCountry = "";
@@ -19,7 +19,7 @@ public class Main {
         Company inputCompany = new Company(inputAccount, inputCompanyName);
         
         inputCompany.registerCompany();
-        
+        */
         Login_screen lng = new Login_screen();
     }
     

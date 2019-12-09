@@ -1,5 +1,6 @@
 package GUI;
 
+import london.recruitmentsystem.*;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,7 +57,7 @@ private class bt1Listener implements ActionListener
         
                     System.out.print(e_mail.getText());
 
-        if(e_mail.getText().equals("thom.ferrier@gmail.com") && password.getText().equals("Bleudywind"))
+        if(Account.checkLogin(e_mail.getText(), password.getText()))
         {
             Main_page main = new Main_page();
             setVisible(false);

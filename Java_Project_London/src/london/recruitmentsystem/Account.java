@@ -26,7 +26,7 @@ public class Account {
             this.email = email;
             this.password = password;
             this.telephoneNumber = telephoneNumber;
-            this.houseAddress = houseAddress;
+            this.houseAddress = new Address(houseAddress.getStreet(), houseAddress.getPostCode(), houseAddress.getCity(), houseAddress.getCountry());
         }
     }
     //______________________________
@@ -42,7 +42,7 @@ public class Account {
         MySQL.insertDataAndExceptionHandling(query);
     }
     
-    public  boolean checkLogin(String email, String password){
+    public static boolean checkLogin(String email, String password){
         
         boolean rightPassword = false;
         String correspondingPassword = "SELECT password FROM  Account WHERE email='" + email + "';";
