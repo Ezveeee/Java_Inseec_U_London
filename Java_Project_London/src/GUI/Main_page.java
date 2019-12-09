@@ -62,8 +62,7 @@ private class bt2Listener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         
-        setVisible(false);
-        dispose();
+       Search S = new Search();       
         
     }
 }
