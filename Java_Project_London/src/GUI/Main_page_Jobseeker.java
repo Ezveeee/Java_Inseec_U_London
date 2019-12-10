@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-public class Main_page extends JFrame {
+public class Main_page_Jobseeker extends JFrame {
     
     final private JButton profil = new JButton("Profile");
     final private JButton bt2 = new JButton("🔎");
@@ -19,7 +19,7 @@ public class Main_page extends JFrame {
     private final int LARGEUR_SCREEN = 1200;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Main_page()
+    public Main_page_Jobseeker()
     {
         setTitle("Paule en ploie");
         //this.setLocation(150,75);
@@ -53,7 +53,7 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        Profil p = new Profil();
+        Profil_Jobseeker p = new Profil_Jobseeker();
         
     }
 }

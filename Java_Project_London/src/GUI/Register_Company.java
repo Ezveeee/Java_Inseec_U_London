@@ -105,7 +105,7 @@ private class bt1Listener implements ActionListener
         
         company.registerCompany();
         
-        Main_page main = new Main_page();
+        Login lng = new Login();
     }
 }
 }

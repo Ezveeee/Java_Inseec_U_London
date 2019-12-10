@@ -57,6 +57,16 @@ public class Account {
         return rightPassword;
     }
     
+    public static boolean getTypeAccount(String email){
+        boolean Jobseeker = false;
+        query = "SELECT name FROM company WHERE id = (SELECT id FROM account WHERE email='"+ email +"');";
+        String accountName = MySQL.getStringAndExceptionHandling(query);
+        if (accountName == null){
+            Jobseeker = true;
+        }
+        return Jobseeker;
+    }
+    
         
     public int getAccountID(){
         return this.accountID;

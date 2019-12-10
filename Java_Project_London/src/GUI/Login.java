@@ -54,15 +54,20 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
-                    System.out.print(e_mail.getText());
+        boolean jobseeker;
 
         if(Account.checkLogin(e_mail.getText(), password.getText()))
         {
-            Main_page main = new Main_page();
+            jobseeker = Account.getTypeAccount(e_mail.getText());
+            if (jobseeker){
+                 Main_page_Jobseeker mainJS = new Main_page_Jobseeker();
+            }
+            else {
+                Main_page_Company mainCP = new Main_page_Company();
+            }
             setVisible(false);
             dispose();
-            System.out.print(password.getText());
+                      
         }
         
         

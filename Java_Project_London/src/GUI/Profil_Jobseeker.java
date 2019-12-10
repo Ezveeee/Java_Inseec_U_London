@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-public class Profil extends JFrame {
+public class Profil_Jobseeker extends JFrame {
     
     final private JButton CV_Screen = new JButton("Modify CV");
     final private JButton personnal_information = new JButton("Modify Personnal Information");
@@ -18,7 +18,7 @@ public class Profil extends JFrame {
     private final int LARGEUR_SCREEN = 250;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Profil()
+    public Profil_Jobseeker()
     {
         setTitle("Profile");
         setLocation(500,150);
