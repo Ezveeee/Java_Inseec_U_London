@@ -27,7 +27,7 @@ public class Jobseeker {
     public void registerJobseeker(){
         this.account.registerAccount();
         this.curriculumVitae.registerCV();
-        query = "INSERT INTO Company VALUES ((SELECT id FROM Account WHERE id=" + this.account.getAccountID() +"), (SELECT id FROM CV WHERE id=" + this.curriculumVitae.getCVID() + "));";
+        query = "INSERT INTO Jobseeker VALUES ((SELECT id FROM Account WHERE id=" + this.account.getAccountID() +"), (SELECT id FROM CV WHERE id=" + this.curriculumVitae.getCVID() + "));";
         MySQL.insertDataAndExceptionHandling(query);
     }
     

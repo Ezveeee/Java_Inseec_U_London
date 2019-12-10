@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class Register_choose extends JFrame
 {
-final private JButton bt1 = new JButton("Job Seaker");
+final private JButton bt1 = new JButton("Jobseeker");
     final private JButton bt2 = new JButton("Company");
     private final int HAUTEUR_SCREEN = 300;
     private final int LARGEUR_SCREEN = 400;

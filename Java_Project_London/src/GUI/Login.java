@@ -50,30 +50,30 @@ public class Login extends JFrame {
     }
     
     
-private class bt1Listener implements ActionListener
-{
-    public void actionPerformed(ActionEvent e)
+    private class bt1Listener implements ActionListener
     {
-        boolean jobseeker;
-
-        if(Account.checkLogin(e_mail.getText(), password.getText()))
+        public void actionPerformed(ActionEvent e)
         {
-            jobseeker = Account.getTypeAccount(e_mail.getText());
-            if (jobseeker){
-                 Main_page_Jobseeker mainJS = new Main_page_Jobseeker();
+            boolean jobseeker;
+
+            if(Account.checkLogin(e_mail.getText(), password.getText()))
+            {
+                jobseeker = Account.getAccountType(e_mail.getText());
+                if (jobseeker){
+                     Main_page_Jobseeker mainJS = new Main_page_Jobseeker();
+                }
+                else {
+                    Main_page_Company mainCP = new Main_page_Company();
+                }
+                setVisible(false);
+                dispose();
+
             }
-            else {
-                Main_page_Company mainCP = new Main_page_Company();
-            }
-            setVisible(false);
-            dispose();
-                      
+
+
+
         }
-        
-        
-        
     }
-}
 }
 
 

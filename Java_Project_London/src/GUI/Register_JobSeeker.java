@@ -120,11 +120,11 @@ public class Register_JobSeeker extends JFrame{
 
             Address jobseeker_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
             Account jobseeker_account = new Account(e_mail.getText(), password.getText(), phone.getText(), jobseeker_address);
-            /*DMY birthDate = new DMY(birthDay.getText(), birthMonth.getText(), birthYear.getText());
+            DMY birthDate = new DMY(birthDay.getText(), birthMonth.getText(), birthYear.getText());
             CV jobseeker_cv = new CV(birthDate, firstName.getText(), lastName.getText());
             Jobseeker jobseeker = new Jobseeker(jobseeker_account, jobseeker_cv);
             
-            jobseeker.registerJobseeker();*/
+            jobseeker.registerJobseeker();
 
             
         }

@@ -44,9 +44,9 @@ public class CV {
     
     
     // Methods
-    public void registerCV(){
-        query = "INSERT INTO CV VALUES (NULL, " + this.birthDate + ", " + this.firstName + ", "
-                        + this.lastName + ");"; 
+    public void registerCV(){ // à modifier
+        query = "INSERT INTO CV VALUES (NULL, '" + this.birthDate.getYear() + "-" + this.birthDate.getMonth() + "-" + this.birthDate.getDay() + "', '" + this.firstName + "', '"
+                        + this.lastName + "', NULL, NULL, NULL, NULL);";
         MySQL.insertDataAndExceptionHandling(query);
     }
     
