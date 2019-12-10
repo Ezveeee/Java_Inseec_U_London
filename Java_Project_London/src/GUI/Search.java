@@ -32,7 +32,7 @@ public class Search extends JFrame
       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
       // Specify an action for the close button.
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
       // Add a GridLayout manager to the content pane.
       setLayout(new GridLayout(8, 2));

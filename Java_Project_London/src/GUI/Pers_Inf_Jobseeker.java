@@ -10,25 +10,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Register_JobSeeker extends JFrame{
-    final private JButton lgn = new JButton("Register");
-    final private JTextField lastName = new JTextField(10);
-    final private JTextField firstName = new JTextField(10);
-    final private JTextField e_mail = new JTextField(10);
-    final private JTextField password = new JTextField(10);
-    final private JTextField phone = new JTextField(10);
-    final private JTextField birthDay = new JTextField(2);
-    final private JTextField birthMonth = new JTextField(2);
-    final private JTextField birthYear = new JTextField(4);
+public class Pers_Inf_Jobseeker extends JFrame{
+    final private JButton lgn = new JButton("Save");
+    final private JTextField lastName;
+    final private JTextField firstName;
+    final private JTextField e_mail;
+    final private JTextField password;
+    final private JTextField phone;
+    final private JTextField birthDay;
+    final private JTextField birthMonth;
+    final private JTextField birthYear;
     final private JLabel lastName_txt = new JLabel("Last Name");
     final private JLabel e_mail_txt = new JLabel("E-mail");
     final private JLabel password_txt = new JLabel("Password");
     final private JLabel phone_txt = new JLabel("Phone Number");
     final private JLabel birthDate_txt = new JLabel("Birth Date (dd/mm/yyyy)");
-    final private JTextField street = new JTextField(10);
-    final private JTextField postcode = new JTextField(10);
-    final private JTextField city = new JTextField(10);
-    final private JTextField country = new JTextField(10);
+    final private JTextField street;
+    final private JTextField postcode;
+    final private JTextField city;
+    final private JTextField country;
     final private JLabel street_txt = new JLabel("Street");
     final private JLabel postcode_txt = new JLabel("Postcode");
     final private JLabel city_txt = new JLabel("City");
@@ -39,9 +39,9 @@ public class Register_JobSeeker extends JFrame{
     private final int LARGEUR_SCREEN = 1200;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Register_JobSeeker()
+    public Pers_Inf_Jobseeker()
     {
-        setTitle("Register");
+        setTitle("Modify your Personnal Information");
         //this.setLocation(150,75);
         setLocation(50,50);
         setSize(LARGEUR_SCREEN,HAUTEUR_SCREEN);
@@ -50,7 +50,21 @@ public class Register_JobSeeker extends JFrame{
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        lgn.addActionListener(new Register_JobSeeker.bt1Listener());
+        lastName = new JTextField(10);
+        firstName = new JTextField(10);
+        e_mail = new JTextField(10);
+        password = new JTextField(10);
+        phone = new JTextField(10);
+        birthDay = new JTextField(2);
+        birthMonth = new JTextField(2);
+        birthYear = new JTextField(4);
+        street = new JTextField(10);
+        postcode = new JTextField(10);             
+        city = new JTextField(10);
+        country = new JTextField(10);
+
+        
+        lgn.addActionListener(new bt1Listener());
         
         
             firstName.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5-30, 200, 20);
@@ -117,10 +131,7 @@ private class bt1Listener implements ActionListener
     {
         setVisible(false);
         dispose();
-        
-       
-
-        
+               
     }
 }
 }

@@ -29,6 +29,7 @@ public class Profil extends JFrame {
         jp.setLayout(null);
         
         CV_Screen.addActionListener(new bt1Listener());
+        personnal_information.addActionListener(new persInfBtn());
         
         CV_Screen.setBounds(LARGEUR_SCREEN/2-119,HAUTEUR_SCREEN/5 - 50, 225, 75);
         personnal_information.setBounds(LARGEUR_SCREEN/2-119, HAUTEUR_SCREEN/5+30, 225, 75);
@@ -47,6 +48,17 @@ private class bt1Listener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         CV_Screen cv = new CV_Screen();
+        setVisible(false);
+        dispose();
+        
+    }
+}
+
+private class persInfBtn implements ActionListener
+{
+    public void actionPerformed(ActionEvent e)
+    {
+        Pers_Inf_Jobseeker perInf = new Pers_Inf_Jobseeker();
         setVisible(false);
         dispose();
         

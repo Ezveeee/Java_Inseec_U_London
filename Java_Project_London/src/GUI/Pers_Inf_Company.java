@@ -10,36 +10,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Register_JobSeeker extends JFrame{
+public class Pers_Inf_Company extends JFrame{
     final private JButton lgn = new JButton("Register");
-    final private JTextField lastName = new JTextField(10);
-    final private JTextField firstName = new JTextField(10);
-    final private JTextField e_mail = new JTextField(10);
-    final private JTextField password = new JTextField(10);
-    final private JTextField phone = new JTextField(10);
-    final private JTextField birthDay = new JTextField(2);
-    final private JTextField birthMonth = new JTextField(2);
-    final private JTextField birthYear = new JTextField(4);
-    final private JLabel lastName_txt = new JLabel("Last Name");
+    final private JTextField firstName;
+    final private JTextField e_mail;
+    final private JTextField password;
+    final private JTextField phone;
     final private JLabel e_mail_txt = new JLabel("E-mail");
     final private JLabel password_txt = new JLabel("Password");
     final private JLabel phone_txt = new JLabel("Phone Number");
-    final private JLabel birthDate_txt = new JLabel("Birth Date (dd/mm/yyyy)");
-    final private JTextField street = new JTextField(10);
-    final private JTextField postcode = new JTextField(10);
-    final private JTextField city = new JTextField(10);
-    final private JTextField country = new JTextField(10);
+    final private JTextField street;
+    final private JTextField postcode;
+    final private JTextField city;
+    final private JTextField country;
     final private JLabel street_txt = new JLabel("Street");
     final private JLabel postcode_txt = new JLabel("Postcode");
     final private JLabel city_txt = new JLabel("City");
     final private JLabel country_txt = new JLabel("Country");
-
-    final private JLabel firstName_txt = new JLabel("First Name");
+    final private JLabel firstName_txt = new JLabel("Name of the Company");
     private final int HAUTEUR_SCREEN = 600;
     private final int LARGEUR_SCREEN = 1200;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Register_JobSeeker()
+    public Pers_Inf_Company()
     {
         setTitle("Register");
         //this.setLocation(150,75);
@@ -50,17 +43,21 @@ public class Register_JobSeeker extends JFrame{
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        lgn.addActionListener(new Register_JobSeeker.bt1Listener());
+        
+        firstName = new JTextField(10);
+        e_mail = new JTextField(10);
+        password = new JTextField(10);
+        phone = new JTextField(10);
+        street = new JTextField(10);
+        postcode = new JTextField(10);
+        city = new JTextField(10);
+        country = new JTextField(10);
+        
+        lgn.addActionListener(new bt1Listener());
         
         
             firstName.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5-30, 200, 20);
             firstName_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5-50, 200, 20);
-            lastName.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 +20, 200, 20);
-            lastName_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5, 200, 20);
-            birthDate_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 50, 200, 20);
-            birthDay.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 70, 20, 20);
-            birthMonth.setBounds(3*LARGEUR_SCREEN/10-80, HAUTEUR_SCREEN/5 + 70, 20, 20);
-            birthYear.setBounds(3*LARGEUR_SCREEN/10-60, HAUTEUR_SCREEN/5 + 70, 35, 20);
             e_mail_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 150, 200, 20);
             e_mail.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 170, 200, 20);
             password_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 200, 200, 20);
@@ -90,13 +87,7 @@ public class Register_JobSeeker extends JFrame{
             jp.add(password);
             jp.add(e_mail);
             jp.add(e_mail_txt);
-            jp.add(birthYear);
-            jp.add(birthMonth);
-            jp.add(birthDay);
-            jp.add(birthDate_txt);
-            jp.add(lastName_txt);
             jp.add(firstName_txt);
-            jp.add(lastName);
             jp.add(firstName);
             
             
@@ -117,11 +108,9 @@ private class bt1Listener implements ActionListener
     {
         setVisible(false);
         dispose();
-        
-       
-
-        
+     
     }
 }
 }
+
 
