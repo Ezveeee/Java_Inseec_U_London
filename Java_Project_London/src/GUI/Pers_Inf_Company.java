@@ -38,7 +38,7 @@ public class Pers_Inf_Company extends JFrame{
         //this.setLocation(150,75);
         setLocation(50,50);
         setSize(LARGEUR_SCREEN,HAUTEUR_SCREEN);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container frame = getContentPane();
         JPanel jp = new JPanel();
         jp.setLayout(null);
