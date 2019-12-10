@@ -111,17 +111,24 @@ public class Register_JobSeeker extends JFrame{
     }
     
     
-private class bt1Listener implements ActionListener
-{
-    public void actionPerformed(ActionEvent e)
+    private class bt1Listener implements ActionListener
     {
-        setVisible(false);
-        dispose();
-        
-       
+        public void actionPerformed(ActionEvent e)
+        {
+            setVisible(false);
+            dispose();
 
-        
+            Address jobseeker_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
+            Account jobseeker_account = new Account(e_mail.getText(), password.getText(), phone.getText(), jobseeker_address);
+            /*DMY birthDate = new DMY(birthDay.getText(), birthMonth.getText(), birthYear.getText());
+            CV jobseeker_cv = new CV(birthDate, firstName.getText(), lastName.getText());
+            Jobseeker jobseeker = new Jobseeker(jobseeker_account, jobseeker_cv);
+            
+            jobseeker.registerJobseeker();*/
+
+
+        }
+
     }
-}
 }
 
