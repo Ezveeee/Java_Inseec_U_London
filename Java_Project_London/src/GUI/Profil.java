@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 
 public class Profil extends JFrame {
     
-    final private JButton CV = new JButton("Modify CV");
+    final private JButton CV_Screen = new JButton("Modify CV");
     final private JButton personnal_information = new JButton("Modify Personnal Information");
     final private JButton password = new JButton("Modify Password");
     private final int HAUTEUR_SCREEN = 300;
@@ -28,13 +28,13 @@ public class Profil extends JFrame {
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        CV.addActionListener(new bt1Listener());
+        CV_Screen.addActionListener(new bt1Listener());
         
-        CV.setBounds(LARGEUR_SCREEN/2-119,HAUTEUR_SCREEN/5 - 50, 225, 75);
+        CV_Screen.setBounds(LARGEUR_SCREEN/2-119,HAUTEUR_SCREEN/5 - 50, 225, 75);
         personnal_information.setBounds(LARGEUR_SCREEN/2-119, HAUTEUR_SCREEN/5+30, 225, 75);
         password.setBounds(LARGEUR_SCREEN/2-119, HAUTEUR_SCREEN/5+110, 225, 75);
         
-        jp.add(CV);
+        jp.add(CV_Screen);
         jp.add(personnal_information);
         jp.add(password);
         add(jp);
@@ -46,7 +46,7 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        CV cv = new CV();
+        CV_Screen cv = new CV_Screen();
         setVisible(false);
         dispose();
         

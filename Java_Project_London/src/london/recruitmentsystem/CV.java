@@ -12,7 +12,7 @@ public class CV {
     
     // Attributes
     private int CVID; //INT - primary key - not null - AUTO_INCREMENT
-    private Date birthDate; //DATE - not null
+    private DMY birthDate; //DATE - not null
     private String firstName; //VARCHAR(30) - not null
     private String lastName; //VARCHAR(30) - not null
     private String overview; //TEXT - can be null
@@ -24,7 +24,7 @@ public class CV {
     
     
     // Constructors
-    public CV(Date birthDate, String firstName, String lastName){
+    public CV(DMY birthDate, String firstName, String lastName){
         query = "SELECT * FROM cv WHERE id = (SELECT MAX(id) FROM cv);";
         if(MySQL.getIntAndExceptionHandling(query) != -1){
             this.CVID = MySQL.getIntAndExceptionHandling(query) + 1;
@@ -56,7 +56,7 @@ public class CV {
     }
     
     
-    public Date getBirthDate(){
+    public DMY getBirthDate(){
         return this.birthDate;
     }
     

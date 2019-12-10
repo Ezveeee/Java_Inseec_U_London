@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-public class CV extends JFrame {
+public class CV_Screen extends JFrame {
     
     final private JPanel jp = new JPanel();
     final private JButton Save = new JButton("Save");
@@ -26,7 +26,7 @@ public class CV extends JFrame {
     private final int LARGEUR_SCREEN = 800;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public CV()
+    public CV_Screen()
     {
         setTitle("Modify Your CV");
         //this.setLocation(150,75);

@@ -120,9 +120,9 @@ private class bt1Listener implements ActionListener
         
         Address jobseeker_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
         Account jobseeker_account = new Account(e_mail.getText(), password.getText(), phone.getText(), jobseeker_address);
-        //Date birthDate = new Date(birthYear.getText(), birthMonth.getText(), birthDay.getText());
-        //CV jobseeker_cv = new CV()
-        //Jobseeker jobseeker = new Jobseeker (jobseeker_account, jobseeker_cv);
+        DMY birthDate = new DMY(birthYear.getText(), birthMonth.getText(), birthDay.getText());
+        CV jobseeker_cv = new CV(birthDate, firstName.getText(), lastName.getText());
+        Jobseeker jobseeker = new Jobseeker (jobseeker_account, jobseeker_cv);
         
         Main_page main = new Main_page();
 
