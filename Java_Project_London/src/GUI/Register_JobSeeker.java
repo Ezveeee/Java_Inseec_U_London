@@ -1,4 +1,5 @@
 package GUI;
+import london.recruitmentsystem.*;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,7 @@ public class Register_JobSeeker extends JFrame{
     final private JTextField e_mail = new JTextField(10);
     final private JTextField password = new JTextField(10);
     final private JTextField phone = new JTextField(10);
-    final private JTextField birthDate = new JTextField(2);
+    final private JTextField birthDay = new JTextField(2);
     final private JTextField birthMonth = new JTextField(2);
     final private JTextField birthYear = new JTextField(4);
     final private JLabel lastName_txt = new JLabel("Last Name");
@@ -57,7 +58,7 @@ public class Register_JobSeeker extends JFrame{
             lastName.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 +20, 200, 20);
             lastName_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5, 200, 20);
             birthDate_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 50, 200, 20);
-            birthDate.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 70, 20, 20);
+            birthDay.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 70, 20, 20);
             birthMonth.setBounds(3*LARGEUR_SCREEN/10-80, HAUTEUR_SCREEN/5 + 70, 20, 20);
             birthYear.setBounds(3*LARGEUR_SCREEN/10-60, HAUTEUR_SCREEN/5 + 70, 35, 20);
             e_mail_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 150, 200, 20);
@@ -91,7 +92,7 @@ public class Register_JobSeeker extends JFrame{
             jp.add(e_mail_txt);
             jp.add(birthYear);
             jp.add(birthMonth);
-            jp.add(birthDate);
+            jp.add(birthDay);
             jp.add(birthDate_txt);
             jp.add(lastName_txt);
             jp.add(firstName_txt);
@@ -114,9 +115,15 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
         setVisible(false);
         dispose();
+        
+        Address jobseeker_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
+        Account jobseeker_account = new Account(e_mail.getText(), password.getText(), phone.getText(), jobseeker_address);
+        Date birthDate = new Date(birthYear.getText(), birthMonth.getText(), birthDay.getText());
+        CV jobseeker_cv = new CV()
+        Jobseeker jobseeker = new Jobseeker (jobseeker_account, jobseeker_cv);
+        
         Main_page main = new Main_page();
 
         

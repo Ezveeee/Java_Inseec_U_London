@@ -96,7 +96,6 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
         setVisible(false);
         dispose();
         

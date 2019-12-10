@@ -24,8 +24,21 @@ public class CV {
     
     
     // Constructors
-    public CV(){
-        
+    public CV(Date birthDate, String firstName, String lastName){
+        query = "SELECT * FROM cv WHERE id = (SELECT MAX(id) FROM cv);";
+        if(MySQL.getIntAndExceptionHandling(query) != -1){
+            this.CVID = MySQL.getIntAndExceptionHandling(query) + 1;
+            this.birthDate = birthDate;
+            this.firstName = firstName;
+            this.lastName = lastName;            
+        }
+    }
+    
+    public CV(CV curriculumVitae){
+        this.CVID = curriculumVitae.getCVID();
+        this.birthDate = curriculumVitae.getBirthDate();
+        this.firstName = curriculumVitae.getFirstName();
+        this.lastName = curriculumVitae.getLastName();
     }
     //______________________________
     
@@ -39,25 +52,21 @@ public class CV {
     
     
     public int getCVID(){
-        
         return this.CVID;
     }
     
     
     public Date getBirthDate(){
-        
         return this.birthDate;
     }
     
     
     public String getFirstName(){
-        
         return this.firstName;
     }
     
     
     public String getLastName(){
-        
         return this.lastName;
     }
     //______________________________
