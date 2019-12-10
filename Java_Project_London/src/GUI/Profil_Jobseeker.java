@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 
 public class Profil_Jobseeker extends JFrame {
     
-    final private JButton CV_Screen = new JButton("Modify CV");
-    final private JButton personnal_information = new JButton("Modify Personnal Information");
+    final private JButton CV_Screen = new JButton("Modify my CV");
+    final private JButton personnal_information = new JButton("Modify my Personnal Information");
     final private JButton JobsRequest = new JButton("View my Job Requests");
     private final int HAUTEUR_SCREEN = 300;
     private final int LARGEUR_SCREEN = 250;

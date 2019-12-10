@@ -11,10 +11,13 @@ import javax.swing.JLabel;
 
 public class Main_page_Company extends JFrame {
     
-    final private JButton profil = new JButton("Profile");
+    final private JButton persInf = new JButton("Modify my personnal information");
+    final private JButton removeAJob = new JButton("Remove a job");
+    final private JButton viewJob = new JButton("View my job");
+    final private JButton postAJob = new JButton("Post a job");
     final private JButton bt2 = new JButton("🔎");
     final private JTextField Search = new JTextField(10);
-    final private JLabel Search_txt = new JLabel("Search a Job");
+    final private JLabel Search_txt = new JLabel("Search a CV");
     private final int HAUTEUR_SCREEN = 600;
     private final int LARGEUR_SCREEN = 1200;
     
@@ -31,19 +34,25 @@ public class Main_page_Company extends JFrame {
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        profil.addActionListener(new bt1Listener());
+        persInf.addActionListener(new bt1Listener());
         bt2.addActionListener(new bt2Listener());
 
         
-        profil.setBounds(9*LARGEUR_SCREEN/10-100/2, HAUTEUR_SCREEN/10-50/2, 200, 50);
+        persInf.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2, 250, 50);
+        postAJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+75, 250, 50);
+        removeAJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+150, 250, 50);
+        viewJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+225, 250, 50);
         bt2.setBounds(LARGEUR_SCREEN/2+100, 3*HAUTEUR_SCREEN/5-30, 70, 20);
         Search.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-30, 200, 20);
         Search_txt.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-50, 200, 20);
         
+        jp.add(postAJob);
+        jp.add(removeAJob);
+        jp.add(viewJob);
         jp.add(bt2);
         jp.add(Search_txt);
         jp.add(Search);
-        jp.add(profil);
+        jp.add(persInf);
         add(jp);
         setVisible(true);
     }
@@ -53,7 +62,7 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        Profil_Company p = new Profil_Company();
+        Pers_Inf_Company perInf = new Pers_Inf_Company();
         
     }
 }

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Pers_Inf_Company extends JFrame{
-    final private JButton lgn = new JButton("Register");
+    final private JButton lgn = new JButton("Save");
     final private JTextField firstName;
     final private JTextField e_mail;
     final private JTextField password;
@@ -34,7 +34,7 @@ public class Pers_Inf_Company extends JFrame{
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Pers_Inf_Company()
     {
-        setTitle("Register");
+        setTitle("Modify your Personnal Information");
         //this.setLocation(150,75);
         setLocation(50,50);
         setSize(LARGEUR_SCREEN,HAUTEUR_SCREEN);
