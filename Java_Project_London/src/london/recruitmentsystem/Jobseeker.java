@@ -32,8 +32,8 @@ public class Jobseeker {
     }
     
     
-    public void createCV(){
-      
+    public void applyToJob(Job job){
+        query = "INSERT INTO Applied VALUES ((SELECT id FROM Account WHERE id=" + this.account.getAccountID() +"), (SELECT id FROM CV WHERE id=" + this.curriculumVitae.getCVID() + "));";
     }
     
     

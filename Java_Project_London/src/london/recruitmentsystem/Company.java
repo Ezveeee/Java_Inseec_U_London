@@ -21,6 +21,11 @@ public class Company {
         this.account = new Account(account, account.getHouseAddress());
         this.name = name;
     }
+    
+    public Company(Company company){
+        this.account = new Account(company.getAccount(), company.getAccount().getHouseAddress());
+        this.name = company.getName();
+    }
     //______________________________
     
     
@@ -34,6 +39,11 @@ public class Company {
     
     public Account getAccount(){
         return this.account;
+    }
+    
+    
+    public String getName(){
+        return this.name;
     }
     
     
