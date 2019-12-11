@@ -17,7 +17,7 @@ public class Main_page_Company extends JFrame {
     final private JButton postAJob = new JButton("Post a job");
     final private JButton logout = new JButton("Logout");
     final private JButton bt2 = new JButton("🔎");
-    final private JTextField Search = new JTextField(10);
+    final private JTextField search = new JTextField(10);
     final private JLabel Search_txt = new JLabel("Search a CV");
     private final int HAUTEUR_SCREEN = 600;
     private final int LARGEUR_SCREEN = 1200;
@@ -48,7 +48,7 @@ public class Main_page_Company extends JFrame {
         removeAJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+150, 250, 50);
         viewJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+225, 250, 50);
         bt2.setBounds(LARGEUR_SCREEN/2+100, 3*HAUTEUR_SCREEN/5-30, 70, 20);
-        Search.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-30, 200, 20);
+        search.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-30, 200, 20);
         Search_txt.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-50, 200, 20);
         logout.setBounds(50, HAUTEUR_SCREEN - 25, 250, 50);
         
@@ -58,7 +58,7 @@ public class Main_page_Company extends JFrame {
         jp.add(viewJob);
         jp.add(bt2);
         jp.add(Search_txt);
-        jp.add(Search);
+        jp.add(search);
         jp.add(persInf);
         add(jp);
         setVisible(true);
@@ -77,8 +77,10 @@ private class bt2Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
-       Search S = new Search();       
+        if (!search.getText().isEmpty()){
+            Search_CV S = new Search_CV(search.getText());       
+        }
+       
         
     }
 }

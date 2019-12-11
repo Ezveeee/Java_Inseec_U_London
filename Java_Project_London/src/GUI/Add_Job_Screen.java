@@ -145,7 +145,7 @@ private class bt1Listener implements ActionListener
         DMY startingDate = new DMY(startingDay.getText(), startingMonth.getText(), startingYear.getText());
         DMY endingDate = new DMY(endingDay.getText(), endingMonth.getText(), endingYear.getText());
         Job job = new Job(companyName, nameJob.getText(), contractType.getSelectedItem().toString(), job_address,
-                                            description.getText(), salary.getText(), startingDate, endingDate, "");
+                                            description.getText(), salary.getText(), startingDate, endingDate, partFull.getSelectedItem().toString());
         
         job_address.registerAddress();
         job.registerJob();
