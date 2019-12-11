@@ -1,4 +1,5 @@
 package GUI;
+import london.recruitmentsystem.*;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -9,15 +10,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import london.recruitmentsystem.CV;
 
 public class CV_Screen extends JFrame {
     
     final private JPanel jp = new JPanel();
     final private JButton Save = new JButton("Save");
-    final private JTextArea overview = new JTextArea ("bite");
-    final private JTextArea education = new JTextArea ("haha");
-    final private JTextArea workExperience = new JTextArea ("hihi");
-    final private JTextArea skills = new JTextArea ("hoho");
+    final private JTextArea overview;
+    final private JTextArea education;
+    final private JTextArea workExperience;
+    final private JTextArea skills;
+    private static String query;
     final private JLabel overview_txt = new JLabel("Overview");
     final private JLabel education_txt = new JLabel("Education");
     final private JLabel workExperience_txt = new JLabel("Work Experience");
@@ -28,6 +31,11 @@ public class CV_Screen extends JFrame {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public CV_Screen()
     {
+        String[] infos = MySQL.getLoggedInCVInfos();
+        overview = new JTextArea(infos[0]);
+        education = new JTextArea(infos[1]);
+        workExperience = new JTextArea(infos[2]);
+        skills = new JTextArea(infos[3]);
         setTitle("Modify Your CV");
         //this.setLocation(150,75);
         setLocation(300,50);
@@ -73,9 +81,12 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-             
+        
         setVisible(false);
         dispose();
+        
+        
+        CV.modifyCV(overview.getText(), education.getText(), workExperience.getText(), skills.getText());
         
     }
 }

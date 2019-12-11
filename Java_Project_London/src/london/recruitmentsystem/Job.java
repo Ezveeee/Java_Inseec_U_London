@@ -120,9 +120,14 @@ public class Job {
             System.out.println("Job partOrFullTime : " + e.getMessage());
         }
         
-        
         query = "INSERT INTO Job VALUES (NULL, '" + this.name + "', '" + this.contractType + "', " + descriptionQuery 
                         + salaryQuery + startingDateQuery + endingDateQuery + partOrFullTimeQuery + Account.getLoggedID() + ", " + this.location.getAddressID() + ");";
+        MySQL.insertDataAndExceptionHandling(query);
+    }
+    
+    
+    public void jobseekerApply(){
+        query = "INSERT INTO Applied VALUES ((SELECT id FROM Job WHERE id=" + this.jobID + "), (SELECT id FROM Jobseeker WHERE id=" + Account.getLoggedID() + "));";
         MySQL.insertDataAndExceptionHandling(query);
     }
     
