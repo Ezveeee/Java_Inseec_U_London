@@ -35,7 +35,14 @@ public class CV_Screen extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container frame = getContentPane();
         jp.setLayout(null);
-        
+        overview.setLineWrap(true);
+        overview.setWrapStyleWord(true);
+        education.setLineWrap(true);
+        education.setWrapStyleWord(true);
+        workExperience.setLineWrap(true);
+        workExperience.setWrapStyleWord(true);
+        skills.setLineWrap(true);
+        skills.setWrapStyleWord(true);
         Save.addActionListener(new bt1Listener());
         
         Save.setBounds(LARGEUR_SCREEN/2-125/2, 9*HAUTEUR_SCREEN/10 - 20, 125, 20);

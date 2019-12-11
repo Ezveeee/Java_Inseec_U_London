@@ -29,8 +29,8 @@ public class Add_Job_Screen extends JFrame{
     final private JTextField endingDay = new JTextField(10);
     final private JTextField endingMonth = new JTextField(10);
     final private JTextField endingYear = new JTextField(10);    
-    final private JLabel startingDate_txt = new JLabel("Starting Date jj/mm/yyyy");
-    final private JLabel endingDate_txt = new JLabel("Ending Date jj/mm/yyyy");
+    final private JLabel startingDate_txt = new JLabel("Starting Date (jj/mm/yyyy)");
+    final private JLabel endingDate_txt = new JLabel("Ending Date (jj/mm/yyyy)");
     final private JLabel street_txt = new JLabel("Street");
     final private JLabel postcode_txt = new JLabel("Postcode");
     final private JLabel city_txt = new JLabel("City");
@@ -38,6 +38,8 @@ public class Add_Job_Screen extends JFrame{
     final private JLabel nameJob_txt = new JLabel("Name of the Job");
     final private JLabel description_txt = new JLabel("Description");
     final private JTextArea description = new JTextArea();
+    final private JLabel salary_txt = new JLabel("Salary");
+    final private JTextArea salary = new JTextArea();
     private final int HAUTEUR_SCREEN = 600;
     private final int LARGEUR_SCREEN = 1200;
     
@@ -80,7 +82,27 @@ public class Add_Job_Screen extends JFrame{
             city.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 +70, 200, 20);
             country_txt.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 100, 200, 20);
             country.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 120, 200, 20);
-           
+            startingDate_txt.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 180, 200, 20);
+            startingDay.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 200, 20, 20);
+            startingMonth.setBounds(7*LARGEUR_SCREEN/10-200/2 + 20, HAUTEUR_SCREEN/5 + 200, 20, 20);
+            startingYear.setBounds(7*LARGEUR_SCREEN/10-200/2 + 40, HAUTEUR_SCREEN/5 + 200, 35, 20);
+            endingDate_txt.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 230, 200, 20);
+            endingDay.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 250, 20, 20);
+            endingMonth.setBounds(7*LARGEUR_SCREEN/10-200/2 + 20, HAUTEUR_SCREEN/5 + 250, 20, 20);
+            endingYear.setBounds(7*LARGEUR_SCREEN/10-200/2 + 40, HAUTEUR_SCREEN/5 + 250, 35, 20);
+            salary_txt.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 280, 200, 20);
+            salary.setBounds(7*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 300, 200, 20);
+
+            jp.add(salary);
+            jp.add(salary_txt);
+            jp.add(endingDay);
+            jp.add(endingMonth);
+            jp.add(endingYear);
+            jp.add(endingDate_txt);
+            jp.add(startingDay);
+            jp.add(startingMonth);
+            jp.add(startingYear);
+            jp.add(startingDate_txt);
             jp.add(city_txt);
             jp.add(city);
             jp.add(country_txt);
