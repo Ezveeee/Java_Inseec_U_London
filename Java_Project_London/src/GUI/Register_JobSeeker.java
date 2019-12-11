@@ -126,7 +126,7 @@ public class Register_JobSeeker extends JFrame{
             
             jobseeker.registerJobseeker();
 
-            
+            Login lng = new Login();
         }
 
     }

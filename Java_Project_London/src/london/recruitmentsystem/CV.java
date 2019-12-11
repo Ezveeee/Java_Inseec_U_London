@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-import java.util.Date;
-
 public class CV {
     
     // Attributes

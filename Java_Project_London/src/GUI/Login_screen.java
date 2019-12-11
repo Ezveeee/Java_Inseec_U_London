@@ -2,6 +2,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import london.recruitmentsystem.Account;
 
 public final class Login_screen extends JFrame
 {
@@ -29,7 +30,7 @@ public final class Login_screen extends JFrame
         jp.add(bt2);
         add(jp);
         setVisible(true);
-        
+        Account.setLoggedID(0);
     }
 
 private class bt1Listener implements ActionListener

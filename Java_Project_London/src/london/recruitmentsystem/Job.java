@@ -49,7 +49,7 @@ public class Job {
                 this.endingDate = new DMY(endingDate);
             }
             
-            if(!partOrFullTime.isBlank() && (partOrFullTime.equals("Part time") || partOrFullTime.equals("Full time") || partOrFullTime.equals("Paid hourly"))){
+            if(!partOrFullTime.isBlank()){
                 if(partOrFullTime.equals("Part time")){
                     this.partOrFullTime = 0;
                 }

@@ -15,6 +15,7 @@ public class Account {
     private String telephoneNumber; //VARCHAR(20) - can be null
     private Address houseAddress; //foreign key
     private static String query;
+    private static int loggedID;
     //______________________________
     
     // Constructors
@@ -90,6 +91,34 @@ public class Account {
     
     public Address getHouseAddress(){
         return this.houseAddress;
+    }
+    
+    
+    public static int getLoggedID(){
+        return loggedID;
+    }
+    
+    
+    public static void setLoggedID(int newLoggedID){
+        query = "SELECT * FROM Account WHERE id = (SELECT MAX(id) FROM Account);";
+        if(MySQL.getIntAndExceptionHandling(query) != -1){
+            int maxID = MySQL.getIntAndExceptionHandling(query);
+            if(loggedID >= 0 && loggedID <= maxID){
+                loggedID = newLoggedID;
+            }
+        }
+    }
+    
+    
+    public static int getIDFromLogin(String email){
+        query = "SELECT id FROM Account WHERE email='" + email + "';";
+        if(MySQL.getIntAndExceptionHandling(query) != -1){
+            int loginID = MySQL.getIntAndExceptionHandling(query);
+            return loginID;
+        }
+        else{
+            return 0;
+        }
     }
     //______________________________
 
