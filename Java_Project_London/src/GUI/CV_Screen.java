@@ -77,19 +77,18 @@ public class CV_Screen extends JFrame {
     }
     
     
-private class bt1Listener implements ActionListener
-{
-    public void actionPerformed(ActionEvent e)
+    private class bt1Listener implements ActionListener
     {
-        
-        setVisible(false);
-        dispose();
-        
-        
-        CV.modifyCV(overview.getText(), education.getText(), workExperience.getText(), skills.getText());
-        
+        public void actionPerformed(ActionEvent e)
+        {
+
+            setVisible(false);
+            dispose();
+
+            CV.modifyCV(overview.getText(), education.getText(), workExperience.getText(), skills.getText());
+        }
     }
-}
+    
 }
 
 

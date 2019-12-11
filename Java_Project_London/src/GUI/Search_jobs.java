@@ -41,33 +41,12 @@ public class Search_jobs extends JFrame
       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       System.out.print(user_search);
       JPanel jp = new JPanel();
-      
-         try {
-             query = "SELECT * FROM job WHERE name LIKE '%"+ user_search +"%'; ";
-             // call fct for rs
-            
-         }
-         catch(Exception e){
-             
-         }
-        
-         try{
-              MySQL.rs.last();
-              NB_ROW_MAX = MySQL.rs.getRow();
-              MySQL.rs.beforeFirst();
-         }
-         catch (Exception e)
-         {
-             System.out.println(e);
-         }
-        
-         
-         jp.setLayout(new GridLayout(NB_ROW_MAX, 5));
-         jobName = new JLabel[NB_ROW_MAX];
-         companyName = new JLabel[NB_ROW_MAX];
-         cityName = new JLabel[NB_ROW_MAX];
-         countryName = new JLabel[NB_ROW_MAX];
-         btn = new JButton[NB_ROW_MAX];
+      jp.setLayout(new GridLayout(NB_ROW_MAX, 5));
+     jobName = new JLabel[NB_ROW_MAX];
+     companyName = new JLabel[NB_ROW_MAX];
+     cityName = new JLabel[NB_ROW_MAX];
+     countryName = new JLabel[NB_ROW_MAX];
+     btn = new JButton[NB_ROW_MAX];
          
     try {     
      while (MySQL.rs.next())
