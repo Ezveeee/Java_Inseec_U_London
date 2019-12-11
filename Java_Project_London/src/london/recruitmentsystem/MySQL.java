@@ -37,7 +37,7 @@ public class MySQL {
             MySQL.stmt.executeUpdate(query);
         }
         catch(SQLException e){
-            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLException when calling insertData(String query) --> stmt.executeUpdate(query) : " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
@@ -71,14 +71,14 @@ public class MySQL {
                 number = rs.getInt(1);
             }
             catch(SQLException e) {
-                System.out.println("SQLException: " + e.getMessage());
+                System.out.println("SQLException when calling getInt(String query) --> rs.next() & number = rs.getInt(1) : " + e.getMessage());
                 System.out.println("SQLState: " + e.getSQLState());
                 System.out.println("VendorError: " + e.getErrorCode());
             }
         }
         
         catch(SQLException e){
-            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
@@ -114,14 +114,14 @@ public class MySQL {
                 str = rs.getString(1);
             }
             catch(SQLException e) {
-                System.out.println("SQLException: " + e.getMessage());
+                System.out.println("SQLException when calling getString(String query) --> rs.next() & str = rs.getString(1) : " + e.getMessage());
                 System.out.println("SQLState: " + e.getSQLState());
                 System.out.println("VendorError: " + e.getErrorCode());
             }
         }
         
         catch(SQLException e){
-            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }

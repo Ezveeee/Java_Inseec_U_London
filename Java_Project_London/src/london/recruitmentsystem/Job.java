@@ -67,16 +67,22 @@ public class Job {
         String partOrFullTimeQuery = "NULL, ";
         
         try{
-            descriptionQuery = "'" + this.description + "', ";
+            if(!this.description.isBlank()){
+                descriptionQuery = "'" + this.description + "', ";
+            }
+            else{
+                    System.out.println("No job description");
+            }
         }
         catch(Exception e){
-            System.out.println("No job description");
+            System.out.println("Job description : " + e.getMessage());
         }
         
-        try{
+ 
+        if(this.salary > 0){
             salaryQuery = this.salary + ", ";
         }
-        catch(Exception e){
+        else{
             System.out.println("No salary");
         }
         
@@ -84,25 +90,39 @@ public class Job {
             startingDateQuery = "'" + this.startingDate.getYear() + "-" + this.startingDate.getMonth() + "-" + this.startingDate.getDay() + "', ";
         }
         catch(Exception e){
-            System.out.println("No starting date");
+            System.out.println("No starting date : " + e);
         }
         
         try{
             endingDateQuery = "'" + this.endingDate.getYear() + "-" + this.endingDate.getMonth() + "-" + this.endingDate.getDay() + "', ";
         }
         catch(Exception e){
-            System.out.println("No ending date");
+            System.out.println("No ending date : " + e);
         }
         
         try{
-            partOrFullTimeQuery = "'" + this.partOrFullTime + "');";
+            if(this.partOrFullTime.equals("Part time") || this.partOrFullTime.equals("Full time") || this.partOrFullTime.equals("Paid hourly")){
+                if(this.partOrFullTime.equals("Part time")){
+                    partOrFullTimeQuery = 0 + ", ";
+                }
+                if(this.partOrFullTime.equals("Full time")){
+                    partOrFullTimeQuery = 1 + ", ";
+                }
+                if(this.partOrFullTime.equals("Paid hourly")){
+                    partOrFullTimeQuery = 2 + ", ";
+                }
+            }
+            else{
+                System.out.println("No part time or full time");
+            }
         }
         catch(Exception e){
-            System.out.println("No part time or full time");
+            System.out.println("Job partOrFullTime : " + e.getMessage());
         }
         
-        query = "INSERT INTO Job VALUES ((SELECT id FROM Job WHERE id=" + this.getJobID() +"), '" + this.getName() + "', '" + this.contractType + "', "
-                        + descriptionQuery + salaryQuery + startingDateQuery + endingDateQuery + partOrFullTimeQuery;
+        
+        query = "INSERT INTO Job VALUES (NULL, '" + this.name + "', '" + this.contractType + "', " + descriptionQuery 
+                        + salaryQuery + startingDateQuery + endingDateQuery + partOrFullTimeQuery + Account.getLoggedID() + ", " + this.location.getAddressID() + ");";
         MySQL.insertDataAndExceptionHandling(query);
     }
     

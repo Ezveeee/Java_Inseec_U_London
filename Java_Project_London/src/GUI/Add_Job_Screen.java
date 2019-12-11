@@ -47,7 +47,7 @@ public class Add_Job_Screen extends JFrame{
     public Add_Job_Screen()
     {
         String [] contractTypeNames = {"Permanent", "Fixed-term", "Internship", "Temporary", "Other"};
-        String [] partFullTime = {"", "Part time", "Full time", "Paid hourly"};
+        String [] partFullTime = {" ", "Part time", "Full time", "Paid hourly"};
         setTitle("Post a Job");
         //this.setLocation(150,75);
         setLocation(50,50);
@@ -138,16 +138,21 @@ private class bt1Listener implements ActionListener
     {
         setVisible(false);
         dispose();
-        
-        String query = "SELECT name FROM Company WHERE address=" + Account.getLoggedID() + ";";
+           
+        String query = "SELECT name FROM Company WHERE id=" + Account.getLoggedID() + ";";
         String companyName = MySQL.getStringAndExceptionHandling(query);
         Address job_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
         DMY startingDate = new DMY(startingDay.getText(), startingMonth.getText(), startingYear.getText());
         DMY endingDate = new DMY(endingDay.getText(), endingMonth.getText(), endingYear.getText());
         Job job = new Job(companyName, nameJob.getText(), contractType.getSelectedItem().toString(), job_address,
-                                            description.getText(), salary.getText(), startingDate, endingDate, partFull.getSelectedItem().toString());
-       
+                                            description.getText(), salary.getText(), startingDate, endingDate, "");
+        
+        job_address.registerAddress();
         job.registerJob();
+       
+           
+       
+        
         
         
     }

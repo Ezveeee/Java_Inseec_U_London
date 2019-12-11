@@ -60,7 +60,6 @@ public class Login extends JFrame {
             if(Account.checkLogin(e_mail.getText(), password.getText()))
             {
                 Account.setLoggedID(Account.getIDFromLogin(e_mail.getText()));
-                System.out.println(Account.getLoggedID());
                 jobseeker = Account.getAccountType(e_mail.getText());
                 if (jobseeker){
                      Main_page_Jobseeker mainJS = new Main_page_Jobseeker();
