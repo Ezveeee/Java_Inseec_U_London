@@ -15,6 +15,7 @@ public class Main_page_Jobseeker extends JFrame {
     final private JButton bt2 = new JButton("🔎");
     final private JTextField Search = new JTextField(10);
     final private JLabel Search_txt = new JLabel("Search a Job");
+    final private JButton logout = new JButton("Logout");
     private final int HAUTEUR_SCREEN = 600;
     private final int LARGEUR_SCREEN = 1200;
     
@@ -33,13 +34,15 @@ public class Main_page_Jobseeker extends JFrame {
         
         profil.addActionListener(new bt1Listener());
         bt2.addActionListener(new bt2Listener());
-
+        logout.addActionListener(new logoutListener());
         
         profil.setBounds(9*LARGEUR_SCREEN/10-100/2, HAUTEUR_SCREEN/10-50/2, 200, 50);
         bt2.setBounds(LARGEUR_SCREEN/2+100, 3*HAUTEUR_SCREEN/5-30, 70, 20);
         Search.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-30, 200, 20);
         Search_txt.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-50, 200, 20);
+        logout.setBounds(50, HAUTEUR_SCREEN - 25, 250, 50);
         
+        jp.add(logout);
         jp.add(bt2);
         jp.add(Search_txt);
         jp.add(Search);
@@ -66,6 +69,17 @@ private class bt2Listener implements ActionListener
         
     }
 }
+
+private class logoutListener implements ActionListener
+{
+    public void actionPerformed(ActionEvent e)
+    {
+        setVisible(false);
+        dispose();
+        Login lng = new Login();
+    }
+}
+
 }
 
 
