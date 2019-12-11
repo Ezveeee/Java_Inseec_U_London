@@ -23,7 +23,8 @@ public class Main_page_Company extends JFrame {
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Main_page_Company()
-    {
+    {   
+        
         setTitle("Paule en ploie");
         //this.setLocation(150,75);
         //setLocation(500,150);
@@ -36,7 +37,9 @@ public class Main_page_Company extends JFrame {
         
         persInf.addActionListener(new bt1Listener());
         bt2.addActionListener(new bt2Listener());
-
+        postAJob.addActionListener(new addJobListener());
+        removeAJob.addActionListener(new removeJobListener());
+        viewJob.addActionListener(new viewJobListener());
         
         persInf.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2, 250, 50);
         postAJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+75, 250, 50);
@@ -75,6 +78,33 @@ private class bt2Listener implements ActionListener
         
     }
 }
+
+private class addJobListener implements ActionListener
+{
+    public void actionPerformed(ActionEvent e)
+    {
+        Add_Job_Screen addJob = new Add_Job_Screen();
+    }
+}
+
+private class removeJobListener implements ActionListener
+{
+    public void actionPerformed(ActionEvent e)
+    {
+        
+        
+    }
+}
+
+private class viewJobListener implements ActionListener
+{
+    public void actionPerformed(ActionEvent e)
+    {
+        
+        
+    }
+}
+
 }
 
 
