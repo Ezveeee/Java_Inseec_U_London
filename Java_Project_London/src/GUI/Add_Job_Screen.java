@@ -139,7 +139,17 @@ private class bt1Listener implements ActionListener
         setVisible(false);
         dispose();
         
+        String query = "SELECT name FROM Company WHERE address=" + Account.getLoggedID() + ";";
+        String companyName = MySQL.getStringAndExceptionHandling(query);
+        Address job_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
+        DMY startingDate = new DMY(startingDay.getText(), startingMonth.getText(), startingYear.getText());
+        DMY endingDate = new DMY(endingDay.getText(), endingMonth.getText(), endingYear.getText());
+        Job job = new Job(companyName, nameJob.getText(), contractType.getSelectedItem().toString(), job_address,
+                                            description.getText(), salary.getText(), startingDate, endingDate, partFull.getSelectedItem().toString());
        
+        job.registerJob();
+        
+        
     }
 }
 }

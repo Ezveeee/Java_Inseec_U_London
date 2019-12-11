@@ -55,17 +55,17 @@ public class Search extends JFrame
       class, causing it to display its window.
    */
    private class bt1Listener implements ActionListener
-{
-    public void actionPerformed(ActionEvent e)
     {
-            for (int i = 0; i < e_mail.length; ++i)
-            {
-                if (e.getSource() == btn[i])
+        public void actionPerformed(ActionEvent e)
+        {
+                for (int i = 0; i < e_mail.length; ++i)
                 {
-                    System.out.print(i);
+                    if (e.getSource() == btn[i])
+                    {
+                        System.out.print(i);
+                    }
                 }
-            }
+        }
     }
-}
    
 }

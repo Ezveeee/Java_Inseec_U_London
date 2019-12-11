@@ -58,7 +58,7 @@ public class Account {
         return rightPassword;
     }
     
-    public static boolean getAccountType(String email){ // à améliorer si le temps
+    public static boolean getAccountType(String email){ // à améliorer si le temps erreur illegal operation on empty result set
         boolean jobseeker = false;
         query = "SELECT name FROM Company WHERE id = (SELECT id FROM Account WHERE email='"+ email +"');";
         String accountName = MySQL.getStringAndExceptionHandling(query);

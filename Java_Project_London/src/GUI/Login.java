@@ -63,7 +63,6 @@ public class Login extends JFrame {
                 System.out.println(Account.getLoggedID());
                 jobseeker = Account.getAccountType(e_mail.getText());
                 if (jobseeker){
-                    
                      Main_page_Jobseeker mainJS = new Main_page_Jobseeker();
                 }
                 else {

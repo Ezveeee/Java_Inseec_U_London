@@ -10,7 +10,7 @@ public class Job {
     
     // Attributes
     private int jobID; //INT - not null - primary key - AUTO_INCREMENT
-    private Company company; //jointure avec Company
+    private String companyName; //jointure avec Company
     private String name; //VARCHAR(30) - not null
     private String contractType; //VARCHAR(10) - not null
     private Address location; //jointure avec Address
@@ -24,11 +24,11 @@ public class Job {
     
     
     // Constructors
-    public Job(Company company, String name, String contractType, Address location, String description, String salary, DMY startingDate, DMY endingDate, String partOrFullTime){
+    public Job(String companyName, String name, String contractType, Address location, String description, String salary, DMY startingDate, DMY endingDate, String partOrFullTime){
         query = "SELECT * FROM Job WHERE id = (SELECT MAX(id) FROM Job);";
         if(MySQL.getIntAndExceptionHandling(query) != -1){
             this.jobID = MySQL.getIntAndExceptionHandling(query) + 1;
-            this.company = new Company(company);
+            this.companyName = companyName;
             this.name = name;
             this.contractType = contractType;
             this.location = new Address(location);
@@ -65,12 +65,14 @@ public class Job {
         String startingDateQuery = "NULL, ";
         String endingDateQuery = "NULL, ";
         String partOrFullTimeQuery = "NULL, ";
+        
         try{
             descriptionQuery = "'" + this.description + "', ";
         }
         catch(Exception e){
             System.out.println("No job description");
         }
+        
         try{
             salaryQuery = this.salary + ", ";
         }
@@ -78,16 +80,38 @@ public class Job {
             System.out.println("No salary");
         }
         
-        //query = "INSERT INTO Job VALUES ((SELECT id FROM Job WHERE id=" + this.getJobID() +"), '" + this.getName() + "', '" + this.contractType + "', " + this.descriptionQuery + "
-        //MySQL.insertDataAndExceptionHandling(query);
+        try{
+            startingDateQuery = "'" + this.startingDate.getYear() + "-" + this.startingDate.getMonth() + "-" + this.startingDate.getDay() + "', ";
+        }
+        catch(Exception e){
+            System.out.println("No starting date");
+        }
+        
+        try{
+            endingDateQuery = "'" + this.endingDate.getYear() + "-" + this.endingDate.getMonth() + "-" + this.endingDate.getDay() + "', ";
+        }
+        catch(Exception e){
+            System.out.println("No ending date");
+        }
+        
+        try{
+            partOrFullTimeQuery = "'" + this.partOrFullTime + "');";
+        }
+        catch(Exception e){
+            System.out.println("No part time or full time");
+        }
+        
+        query = "INSERT INTO Job VALUES ((SELECT id FROM Job WHERE id=" + this.getJobID() +"), '" + this.getName() + "', '" + this.contractType + "', "
+                        + descriptionQuery + salaryQuery + startingDateQuery + endingDateQuery + partOrFullTimeQuery;
+        MySQL.insertDataAndExceptionHandling(query);
     }
     
     public int getJobID(){
         return this.jobID;
     }
     
-    public Company getCompany(){
-        return this.company;
+    public String getCompanyName(){
+        return this.companyName;
     }
     
     public String getName(){
