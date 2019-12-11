@@ -15,8 +15,8 @@ import javax.swing.JComboBox;
 public class Add_Job_Screen extends JFrame{
     final private JButton lgn = new JButton("Post");
     final private JTextField nameJob = new JTextField(10);
-    final private JComboBox contractType;
-    final private JComboBox partFull;
+    final private JComboBox <String> contractType;
+    final private JComboBox <String> partFull;
     final private JLabel contractType_txt = new JLabel("Type of contract");
     final private JLabel partFull_txt = new JLabel("Hours");
     final private JTextField street = new JTextField(10);
@@ -57,8 +57,8 @@ public class Add_Job_Screen extends JFrame{
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        contractType = new JComboBox(contractTypeNames);
-        partFull = new JComboBox(partFullTime);
+        contractType = new JComboBox<>(contractTypeNames);
+        partFull = new JComboBox<>(partFullTime);
         
         description.setLineWrap(true);
         description.setWrapStyleWord(true);
