@@ -18,7 +18,7 @@ public class Job {
     private int salary; //DECIMAL/NUMERIC/FLOAT/DOUBLE voir cours openclassrooms - can be null
     private DMY startingDate; //DATE - can be null
     private DMY endingDate; //DATE can be null
-    private int partOrFullTime; //voir openclassrooms 0 being part time and 1 being full time
+    private String partOrFullTime; //voir openclassrooms 0 being part time and 1 being full time
     private static String query;
     //______________________________
     
@@ -50,15 +50,7 @@ public class Job {
             }
             
             if(!partOrFullTime.isBlank()){
-                if(partOrFullTime.equals("Part time")){
-                    this.partOrFullTime = 0;
-                }
-                 if(partOrFullTime.equals("Full time")){
-                    this.partOrFullTime = 1;
-                }
-                  if(partOrFullTime.equals("Paid hourly")){
-                    this.partOrFullTime = 2;
-                }
+                this.partOrFullTime = partOrFullTime;
             }
             
         }
@@ -68,8 +60,54 @@ public class Job {
     
     // Methods
     public void registerJob(){
+        String descriptionQuery = "NULL, ";
+        String salaryQuery = "NULL, ";
+        String startingDateQuery = "NULL, ";
+        String endingDateQuery = "NULL, ";
+        String partOrFullTimeQuery = "NULL, ";
+        try{
+            descriptionQuery = "'" + this.description + "', ";
+        }
+        catch(Exception e){
+            System.out.println("No job description");
+        }
+        try{
+            salaryQuery = this.salary + ", ";
+        }
+        catch(Exception e){
+            System.out.println("No salary");
+        }
         
+        //query = "INSERT INTO Job VALUES ((SELECT id FROM Job WHERE id=" + this.getJobID() +"), '" + this.getName() + "', '" + this.contractType + "', " + this.descriptionQuery + "
+        //MySQL.insertDataAndExceptionHandling(query);
+    }
+    
+    public int getJobID(){
+        return this.jobID;
+    }
+    
+    public Company getCompany(){
+        return this.company;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public String getContractType(){
+        return this.contractType;
+    }
+    
+    public Address getLocation(){
+        return this.location;
+    }
+    
+    public DMY getStartingDate(){
+        return this.startingDate;
+    }
+    
+    public DMY getEndingDate(){
+        return this.endingDate;
     }
     //______________________________
-
 }

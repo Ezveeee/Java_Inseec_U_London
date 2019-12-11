@@ -52,6 +52,7 @@ public class Login extends JFrame {
     
     private class bt1Listener implements ActionListener
     {
+        
         public void actionPerformed(ActionEvent e)
         {
             boolean jobseeker;
@@ -70,13 +71,11 @@ public class Login extends JFrame {
                 }
                 setVisible(false);
                 dispose();
-
             }
-
-
-
         }
+        
     }
+    
 }
 
 
