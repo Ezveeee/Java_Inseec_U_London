@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.GridLayout; 
+import java.util.ArrayList;
 
 /**
    This class demonstrates the GridLayout manager.
@@ -19,61 +20,48 @@ public class Search_jobs extends JFrame
 {
    private final int WINDOW_WIDTH = 400;   // Window width
    private final int WINDOW_HEIGHT = 200;  // Window height
-   private JLabel[] jobName;
-   private JLabel[] companyName;
-   private JLabel[] cityName;
-   private JLabel[] countryName;
-   private final JButton[] btn;
-   private int NB_ROW_MAX;
+   private ArrayList<JLabel> jobName = new ArrayList<JLabel>();
+   private ArrayList<JLabel> companyName = new ArrayList<JLabel>();
+   private ArrayList<JLabel> city = new ArrayList<JLabel>();
+   private ArrayList<JLabel> country = new ArrayList<JLabel>();
+   private ArrayList<JButton> btn = new ArrayList<JButton>();
    private static String query;
     @SuppressWarnings("OverridableMethodCallInConstructor")
 
    public Search_jobs(String user_search)
    {
-       int i = 0;
+       setTitle("Grid Layout");
+       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       JPanel jp = new JPanel();
        
-      // Set the title bar text.
-      setTitle("Grid Layout");
+       String[][] jobList = MySQL.getJobList(user_search);
+       
+       int i = 0;
+       JLabel temp = new JLabel();
+       while (i < jobList.length)
+       {
+           temp.setText(jobList[i][0]);
+           jobName.set(i, temp);
+           add(jobName.get(i));
 
-      // Set the size of the window.
-      setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+           temp.setText(jobList[i][1]);
+           companyName.set(i, temp);
+           add(companyName.get(i));
 
-      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-      System.out.print(user_search);
-      JPanel jp = new JPanel();
-      jp.setLayout(new GridLayout(NB_ROW_MAX, 5));
-     jobName = new JLabel[NB_ROW_MAX];
-     companyName = new JLabel[NB_ROW_MAX];
-     cityName = new JLabel[NB_ROW_MAX];
-     countryName = new JLabel[NB_ROW_MAX];
-     btn = new JButton[NB_ROW_MAX];
-         
-    try {     
-     while (MySQL.rs.next())
-        {
-            jobName[i] = new JLabel(MySQL.rs.getString(2));
-            query = "SELECT name from company where id = "+MySQL.rs.getInt(9)+";";
-            companyName[i] = new JLabel(MySQL.getStringAndExceptionHandling(query));
-            query = "SELECT city from address where id ="+MySQL.rs.getInt(10) +";";
-            cityName[i] = new JLabel(MySQL.getStringAndExceptionHandling(query));
-            query = "SELECT country from address where id ="+MySQL.rs.getInt(10) +";";
-            countryName[i] = new JLabel(MySQL.getStringAndExceptionHandling(query));
-            btn[i] = new JButton ("More Detail");
-            add(jobName[i]);
-            add(companyName[i]);
-            add(cityName[i]);
-            add(countryName[i]);
-            add(btn[i]);
-            btn[i].addActionListener(new bt1Listener());
-            ++i;
-        }
-     }
-     catch (Exception e)
-     {
-         System.out.println(e);
-     }
+           temp.setText(jobList[i][2]);
+           city.set(i, temp);
+           add(city.get(i));
 
-      // Display the window.
+           temp.setText(jobList[i][3]);
+           country.set(i, temp);
+           add(country.get(i));
+
+           add(btn.get(i));
+           btn.get(i).addActionListener(new bt1Listener());
+
+           ++i;
+       }
       setVisible(true);
    }
    
@@ -85,14 +73,10 @@ public class Search_jobs extends JFrame
     {
         public void actionPerformed(ActionEvent e)
         {
-                for (int i = 0; i < NB_ROW_MAX; ++i)
+                for (int i = 0; i < 
                 {
-                    if (e.getSource() == btn[i])
-                    {
-                        System.out.print(i);
-                    }
+                    
                 }
         }
     }
-   
 }
