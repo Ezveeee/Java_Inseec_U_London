@@ -660,11 +660,12 @@ public class MySQL {
         return infos;
     }
     
-    public static int[] getAppliedJobIDList(){
-        int numberOfRows = -1;
+    public static String[][] getCompanyJobList(){
+         int numberOfRows = -1;
+         String[][] jobList;
          try{
              stmt = MySQL.conn.createStatement();
-             query = "SELECT job FROM Applied WHERE jobseeker=" + Account.getLoggedID() + ";";
+             query = "SELECT name FROM Job WHERE company="+ Account.getLoggedID() +";";
              rs = MySQL.stmt.executeQuery(query);
              try{
                   rs.last();
@@ -678,11 +679,11 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             int[] jobList = new int[numberOfRows];
+             jobList = new String[numberOfRows][4];
              
              try{ //add job name
                  while(rs.next()){
-                    jobList[rs.getRow()-1] = rs.getInt(1);
+                    jobList[rs.getRow()-1][0] = rs.getString(1);
                 }
              }
              catch(SQLException e){
@@ -690,15 +691,53 @@ public class MySQL {
                  System.out.println("SQLState: " + e.getSQLState());
                  System.out.println("VendorError: " + e.getErrorCode());
              }
-             return jobList;
+             
+             query = "SELECT name FROM Company WHERE id IN  '"+ Account.getLoggedID() +"';";
+             rs = MySQL.stmt.executeQuery(query);
+             try{ //add company name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][1] = rs.getString(1);
+                 }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE company IN '"+ Account.getLoggedID() +"');";
+             rs = MySQL.stmt.executeQuery(query);
+             try{ //add city name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][2] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE company IN '"+ Account.getLoggedID() +"');";
+             rs = MySQL.stmt.executeQuery(query);
+             try{ //add country name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][3] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
         }
         
         catch(SQLException e){
-            int[]jobList = null;
+            jobList = null;
             System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
-            return jobList;
         }
         
         finally{ //realease resources
@@ -717,6 +756,7 @@ public class MySQL {
                 catch(SQLException sqlEx){}
                 stmt = null;
             }
-        }
+        }	
+    return jobList;
     }
 }
