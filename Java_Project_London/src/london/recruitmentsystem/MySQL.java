@@ -191,7 +191,7 @@ public class MySQL {
     }
      
      public static String[] getLoggedInJobseekerInfo(){
-        String[] infos = new String[12];
+        String[] infos = new String[9];
         try{
             stmt = MySQL.conn.createStatement();
             query = "SELECT street, postCode, city, country FROM Address WHERE id=(SELECT Address FROM Account WHERE id=" + Account.getLoggedID() + ");";
@@ -225,13 +225,12 @@ public class MySQL {
                 System.out.println("VendorError: " + e.getErrorCode());
             }
             
-            query = "SELECT birthDate, firstName, lastName FROM CV WHERE id=(SELECT cv FROM Jobseeker WHERE id=" + Account.getLoggedID() + ");";
+            query = "SELECT firstName, lastName FROM CV WHERE id=(SELECT cv FROM Jobseeker WHERE id=" + Account.getLoggedID() + ");";
             rs = MySQL.stmt.executeQuery(query);
             try{
                 if(rs.next()){
-                    infos[7/*8/9*/] = rs.getString(1);
-                    infos[10] = rs.getString(2);
-                    infos[11] = rs.getString(3);
+                    infos[7] = rs.getString(1);
+                    infos[8] = rs.getString(2);
                 }
             }
             catch(SQLException e) {

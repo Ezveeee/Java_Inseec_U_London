@@ -47,8 +47,8 @@ public class Pers_Inf_Jobseeker extends JFrame{
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        lastName = new JTextField(infos[11]);
-        firstName = new JTextField(infos[10]);
+        lastName = new JTextField(infos[8]);
+        firstName = new JTextField(infos[7]);
         e_mail = new JTextField(infos[4]);
         password = new JTextField(infos[5]);
         phone = new JTextField(infos[6]);
@@ -118,10 +118,12 @@ private class bt1Listener implements ActionListener
         
         
          if(!(street.getText().isBlank() || postcode.getText().isBlank() || city.getText().isBlank() || country.getText().isBlank()
-                    || e_mail.getText().isBlank() || password.getText().isBlank() || firstName.getText().isBlank() || lastName.getText().isBlank())){
+             || e_mail.getText().isBlank() || password.getText().isBlank() 
+                || firstName.getText().isBlank() || lastName.getText().isBlank())){
              
              Jobseeker.modifyPersonalInformation(e_mail.getText(), password.getText(), phone.getText(), 
-                                                                                        street.getText(), postcode.getText(), city.getText(), country.getText(), firstName.getText(), lastName.getText());
+                                                 street.getText(), postcode.getText(), city.getText(), country.getText(),
+                                                 firstName.getText(), lastName.getText());
              
              setVisible(false);
              dispose();
