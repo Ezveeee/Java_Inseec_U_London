@@ -46,6 +46,27 @@ public class Company {
         return this.name;
     }
     
+    public static void modifyPersonalInformation(String email, String password, String telephoneNumber,String street, String postCode, String city, String country, String nameOfTheCompany){
+        String telephoneNumberQuery = "telephoneNumber=NULL";
+        try{
+            if(!telephoneNumber.isBlank()){
+                telephoneNumberQuery = "telephoneNumber='" + telephoneNumber + "'";
+            }
+        }
+        catch(Exception e){
+            System.out.println("Jobseeker telephone number : " + e.getMessage());
+        }
+        
+        query = "UPDATE  Address SET street='" + street + "', postCode='" + postCode + "', city='" + city + "', country='" + country 
+                        + "' WHERE id=(SELECT address FROM Account WHERE id=" + Account.getLoggedID() + ");";
+        MySQL.insertDataAndExceptionHandling(query);
+        query = "UPDATE Account SET email='" + email + "', password='" + password + "', " + telephoneNumberQuery 
+                        + " WHERE id=" + Account.getLoggedID() + ";";
+        MySQL.insertDataAndExceptionHandling(query);
+        query = "UPDATE Company SET name='" + nameOfTheCompany + "',"
+                        + " WHERE id=" + Account.getLoggedID() + ");";
+        MySQL.insertDataAndExceptionHandling(query);
+    }
     
     public void changeDescription(){
         //demander au user la description

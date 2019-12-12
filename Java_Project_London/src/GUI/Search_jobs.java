@@ -36,7 +36,7 @@ public class Search_jobs extends JFrame
        JPanel jp = new JPanel();
        
        String[][] jobList = MySQL.getJobList(user_search);
-       
+
        int i = 0;
        JLabel temp = new JLabel();
        while (i < jobList[0].length)

@@ -35,9 +35,7 @@ public class Jobseeker {
         query = "INSERT INTO Applied VALUES ((SELECT id FROM Account WHERE id=" + this.account.getAccountID() +"), (SELECT id FROM CV WHERE id=" + this.curriculumVitae.getCVID() + "));";
     }
     
-   public static void modifyPersonalInformation(String email, String password, String telephoneNumber, 
-                                                                                        String street, String postCode, String city, String country,
-                                                                                            String firstName, String lastName){
+   public static void modifyPersonalInformation(String email, String password, String telephoneNumber,String street, String postCode, String city, String country, String firstName, String lastName){
         String telephoneNumberQuery = "telephoneNumber=NULL";
         try{
             if(!telephoneNumber.isBlank()){

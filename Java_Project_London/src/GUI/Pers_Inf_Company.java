@@ -106,9 +106,18 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        setVisible(false);
-        dispose();
-     
+       if(!(street.getText().isBlank() || postcode.getText().isBlank() || city.getText().isBlank() || country.getText().isBlank()
+                    || e_mail.getText().isBlank() || password.getText().isBlank() || firstName.getText().isBlank() )){
+             
+             Company.modifyPersonalInformation(e_mail.getText(), password.getText(), phone.getText(), 
+                                                                                        street.getText(), postcode.getText(), city.getText(), country.getText(), firstName.getText());
+             
+             setVisible(false);
+             dispose();
+         }
+         else{
+             // message d'erreur "Please enter all mandatory fields"
+         }
     }
 }
 }
