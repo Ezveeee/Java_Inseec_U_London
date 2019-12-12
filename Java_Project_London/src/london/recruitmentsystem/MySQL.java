@@ -658,4 +658,104 @@ public class MySQL {
         }
         return infos;
     }
+    public static String[][] getCompanyJobList(){
+         int numberOfRows = -1;
+         String[][] jobList;
+         try{
+             stmt = MySQL.conn.createStatement();
+             query = "SELECT name FROM Job WHERE company IN '"+ Account.getLoggedID() +"';";
+             rs = MySQL.stmt.executeQuery(query);
+             try{
+                  rs.last();
+                  numberOfRows = rs.getRow();
+                  rs.beforeFirst();
+             }
+             catch (SQLException e)
+             {
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> rs.last(), rs.getRow(), rs.beforeFirst() : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             jobList = new String[numberOfRows][4];
+             
+             try{ //add job name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][0] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add job name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             query = "SELECT name FROM Company WHERE id IN  '"+ Account.getLoggedID() +"';";
+             rs = MySQL.stmt.executeQuery(query);
+             try{ //add company name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][1] = rs.getString(1);
+                 }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE company IN '"+ Account.getLoggedID() +"');";
+             rs = MySQL.stmt.executeQuery(query);
+             try{ //add city name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][2] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE company IN '"+ Account.getLoggedID() +"');";
+             rs = MySQL.stmt.executeQuery(query);
+             try{ //add country name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1][3] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+        }
+        
+        catch(SQLException e){
+            jobList = null;
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            
+        }
+        
+        finally{ //realease resources
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){}
+                rs = null;
+                }
+            
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){}
+                stmt = null;
+            }
+        }
+		
+   return jobList; }
 }
