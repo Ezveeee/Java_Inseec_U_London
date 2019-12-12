@@ -63,8 +63,8 @@ public class Company {
         query = "UPDATE Account SET email='" + email + "', password='" + password + "', " + telephoneNumberQuery 
                         + " WHERE id=" + Account.getLoggedID() + ";";
         MySQL.insertDataAndExceptionHandling(query);
-        query = "UPDATE Company SET name='" + nameOfTheCompany + "',"
-                        + " WHERE id=" + Account.getLoggedID() + ");";
+        query = "UPDATE Company SET name='" + nameOfTheCompany + "'"
+                        + " WHERE id=" + Account.getLoggedID() + ";";
         MySQL.insertDataAndExceptionHandling(query);
     }
     

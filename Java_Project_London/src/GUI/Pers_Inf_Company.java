@@ -34,6 +34,7 @@ public class Pers_Inf_Company extends JFrame{
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Pers_Inf_Company()
     {
+        String[] infos = MySQL.getLoggedInCompanyInfo();
         setTitle("Modify your Personnal Information");
         //this.setLocation(150,75);
         setLocation(50,50);
@@ -44,14 +45,14 @@ public class Pers_Inf_Company extends JFrame{
         jp.setLayout(null);
         
         
-        firstName = new JTextField(10);
-        e_mail = new JTextField(10);
-        password = new JTextField(10);
-        phone = new JTextField(10);
-        street = new JTextField(10);
-        postcode = new JTextField(10);
-        city = new JTextField(10);
-        country = new JTextField(10);
+        firstName = new JTextField(infos[7]);
+        e_mail = new JTextField(infos[4]);
+        password = new JTextField(infos[5]);
+        phone = new JTextField(infos[6]);
+        street = new JTextField(infos[0]);
+        postcode = new JTextField(infos[1]);
+        city = new JTextField(infos[2]);
+        country = new JTextField(infos[3]);
         
         lgn.addActionListener(new bt1Listener());
         
