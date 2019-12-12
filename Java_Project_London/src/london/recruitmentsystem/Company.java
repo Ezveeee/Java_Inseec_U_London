@@ -71,26 +71,6 @@ public class Company {
         //this.description = 
         //envoyer description à la base de donnée
     }
-    
-    public void postJob(){
-        
-    }
-    
-    public void removeJob(){
-        
-    }
-    
-    public void getPostedJobs(){
-        
-    }
-    
-    public void recruitCandidate(int candidateID){
-        
-    }
-    
-    public void searchCV(){
-        
-    }
     //______________________________
     
 

@@ -125,7 +125,7 @@ public class Job {
         MySQL.executeUpdateAndExceptionHandling(query);
     }
     
-    public void removeJob(int jobID){
+    public static void removeJob(int jobID){
         query = "DELETE FROM Job WHERE id=" + jobID + ";";
         MySQL.executeUpdateAndExceptionHandling(query);
     }

@@ -404,7 +404,7 @@ public class MySQL {
          int numberOfRows = -1;
          try{
              stmt = MySQL.conn.createStatement();
-             query = "SELECT name FROM Company WHERE id IN (SELECT company FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             query = "SELECT id FROM Job WHERE name LIKE '%"+ userSearch +"%';";
              rs = MySQL.stmt.executeQuery(query);
              try{
                   rs.last();
@@ -419,7 +419,8 @@ public class MySQL {
              }
              
              String[] jobList = new String[numberOfRows];
-             
+             query = "SELECT name FROM Company WHERE id IN (SELECT company FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             rs = MySQL.stmt.executeQuery(query);
              try{ //add job name
                  while(rs.next()){
                     jobList[rs.getRow()-1] = rs.getString(1);
@@ -464,7 +465,7 @@ public class MySQL {
          int numberOfRows = -1;
          try{
              stmt = MySQL.conn.createStatement();
-             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             query = "SELECT id FROM Job WHERE name LIKE '%"+ userSearch +"%';";
              rs = MySQL.stmt.executeQuery(query);
              try{
                   rs.last();
@@ -479,7 +480,8 @@ public class MySQL {
              }
              
              String[] jobList = new String[numberOfRows];
-             
+             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             rs = MySQL.stmt.executeQuery(query);
              try{ //add job name
                  while(rs.next()){
                     jobList[rs.getRow()-1] = rs.getString(1);
@@ -524,7 +526,7 @@ public class MySQL {
          int numberOfRows = -1;
          try{
              stmt = MySQL.conn.createStatement();
-             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             query = "SELECT id FROM Job WHERE name LIKE '%"+ userSearch +"%';";
              rs = MySQL.stmt.executeQuery(query);
              try{
                   rs.last();
@@ -539,7 +541,8 @@ public class MySQL {
              }
              
              String[] jobList = new String[numberOfRows];
-             
+             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             rs = MySQL.stmt.executeQuery(query);
              try{ //add job name
                  while(rs.next()){
                     jobList[rs.getRow()-1] = rs.getString(1);

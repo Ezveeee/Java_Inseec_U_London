@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class Search_jobs extends JFrame
 {
-   private final int WINDOW_WIDTH = 400;   // Window width
-   private final int WINDOW_HEIGHT = 200;  // Window height
+   private final int WINDOW_WIDTH = 800;   // Window width
+   private final int WINDOW_HEIGHT = 400;  // Window height
    private static String query;
     @SuppressWarnings("OverridableMethodCallInConstructor")
 

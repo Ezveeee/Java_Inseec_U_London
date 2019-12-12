@@ -115,8 +115,6 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
-        
          if(!(street.getText().isBlank() || postcode.getText().isBlank() || city.getText().isBlank() || country.getText().isBlank()
              || e_mail.getText().isBlank() || password.getText().isBlank() 
                 || firstName.getText().isBlank() || lastName.getText().isBlank())){
