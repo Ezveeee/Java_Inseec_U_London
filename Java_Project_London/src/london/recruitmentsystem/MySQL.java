@@ -31,7 +31,7 @@ public class MySQL {
         }
     }
     
-    public static void insertDataAndExceptionHandling(String query){
+    public static void executeUpdateAndExceptionHandling(String query){
         try{
             MySQL.stmt = MySQL.conn.createStatement();
             MySQL.stmt.executeUpdate(query);
@@ -412,9 +412,6 @@ public class MySQL {
              return jobList;
         }
         
-         
-         
-         
         catch(SQLException e){
             String[][]jobList = null;
             System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());

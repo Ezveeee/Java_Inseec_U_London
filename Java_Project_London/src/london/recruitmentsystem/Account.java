@@ -45,7 +45,7 @@ public class Account {
         this.houseAddress.registerAddress();
         query = "INSERT INTO Account VALUES (NULL, '" + this.email + "', '" + this.password + "', '"
                         + this.telephoneNumber + "', (SELECT id FROM Address WHERE id=" + this.houseAddress.getAddressID() + "));"; 
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     public static boolean checkLogin(String email, String password){

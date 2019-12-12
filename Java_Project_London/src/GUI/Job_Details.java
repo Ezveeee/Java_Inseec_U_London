@@ -1,4 +1,4 @@
-package GUI;
+/*package GUI;
 import london.recruitmentsystem.*;
 
 import java.awt.Container;
@@ -102,4 +102,4 @@ public class Job_Details extends JFrame{
         }
     }
 }
-
+*/

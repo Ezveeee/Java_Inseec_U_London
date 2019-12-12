@@ -122,13 +122,17 @@ public class Job {
         
         query = "INSERT INTO Job VALUES (NULL, '" + this.name + "', '" + this.contractType + "', " + descriptionQuery 
                         + salaryQuery + startingDateQuery + endingDateQuery + partOrFullTimeQuery + Account.getLoggedID() + ", " + this.location.getAddressID() + ");";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
+    public void removeJob(int jobID){
+        query = "DELETE FROM Job WHERE id=" + jobID + ";";
+        MySQL.executeUpdateAndExceptionHandling(query);
+    }
     
     public void jobseekerApply(){
         query = "INSERT INTO Applied VALUES ((SELECT id FROM Job WHERE id=" + this.jobID + "), (SELECT id FROM Jobseeker WHERE id=" + Account.getLoggedID() + "));";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     public int getJobID(){

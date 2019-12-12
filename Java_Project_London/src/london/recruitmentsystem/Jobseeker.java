@@ -28,7 +28,7 @@ public class Jobseeker {
         this.account.registerAccount();
         this.curriculumVitae.registerCV();
         query = "INSERT INTO Jobseeker VALUES ((SELECT id FROM Account WHERE id=" + this.account.getAccountID() +"), (SELECT id FROM CV WHERE id=" + this.curriculumVitae.getCVID() + "));";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     public void applyToJob(Job job){
@@ -48,13 +48,13 @@ public class Jobseeker {
         
         query = "UPDATE  Address SET street='" + street + "', postCode='" + postCode + "', city='" + city + "', country='" + country 
                         + "' WHERE id=(SELECT address FROM Account WHERE id=" + Account.getLoggedID() + ");";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
         query = "UPDATE Account SET email='" + email + "', password='" + password + "', " + telephoneNumberQuery 
                         + " WHERE id=" + Account.getLoggedID() + ";";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
         query = "UPDATE CV SET firstName='" + firstName + "', lastName='" + lastName 
                         + "' WHERE id=(SELECT cv FROM Jobseeker WHERE id=" + Account.getLoggedID() + ");";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     
