@@ -1,11 +1,5 @@
 package london.recruitmentsystem;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
-
 public class Account {
     
     // Attributes
@@ -59,15 +53,13 @@ public class Account {
     }
     
     public static boolean getAccountType(String email){ // à améliorer si le temps erreur illegal operation on empty result set
+        boolean jobseeker = false;
         query = "SELECT name FROM Company WHERE id = (SELECT id FROM Account WHERE email='"+ email +"');";
-        try{
-            String accountName = MySQL.getStringAndExceptionHandling(query);
-            return false;
+        String accountName = MySQL.getStringAndExceptionHandling(query);
+        if (accountName == null){
+            jobseeker = true;
         }
-        catch(Exception e){
-            System.out.println("Not a company --> is a jobseeker : " + e);
-            return true;
-        }
+        return jobseeker;
     }
     
         
