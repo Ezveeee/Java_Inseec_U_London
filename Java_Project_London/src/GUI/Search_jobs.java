@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Search_jobs extends JFrame
 {
    private final int WINDOW_WIDTH = 400;   // Window width
-   private final int WINDOW_HEIGHT = 200;  // Window height
+   private final int WINDOW_HEIGHT = 500;  // Window height
    private ArrayList<JButton> btn = new ArrayList<JButton>();
    private static String query;
     @SuppressWarnings("OverridableMethodCallInConstructor")
@@ -27,13 +27,14 @@ public class Search_jobs extends JFrame
    public Search_jobs(String user_search)
    {
        setTitle("Grid Layout");
+       setLocation (400, 50);
        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        JPanel jp = new JPanel();
        
        String[][] jobList = MySQL.getJobList(user_search);
 
-       setLayout(new GridLayout(jobList[0].length, 5));
+       jp.setLayout(new GridLayout(jobList.length, 5));
        
        int i = 0;
        int j = 0;
