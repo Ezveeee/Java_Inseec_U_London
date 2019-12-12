@@ -38,26 +38,26 @@ public class Company_jobs extends JFrame
        
        jp.setLayout(new GridLayout(jobListID.length, 5));
        
-       JLabel[] labelList = new JLabel[jobListID.length*4];
+       JLabel[][] labelList = new JLabel[jobListID.length][4];
        btnList = new JButton[jobListID.length];
        try{
            int j=0;
            for (int i = 0; i < jobListID.length; ++i){
-             //  labelList[j] = new JLabel(Integer.toString(jobListID[i]));
-               jp.add(labelList[j]);
+               labelList[i][j] = new JLabel(jobListID[i][j]);
+               jp.add(labelList[i][j]);
                ++j;
 
-               //labelList[j] = new JLabel(jobListCompany[i]);
-               jp.add(labelList[j]);
+               labelList[i][j] = new JLabel(jobListID[i][j]);
+               jp.add(labelList[i][j]);
                ++j;
 
-               //labelList[j] = new JLabel(jobListCity[i]);
-               jp.add(labelList[j]);
+               labelList[i][j] = new JLabel(jobListID[i][j]);
+               jp.add(labelList[i][j]);
                ++j;
 
-               //labelList[j] = new JLabel(jobListCountry[i]);
-               jp.add(labelList[j]);
-               ++j;
+               labelList[i][j] = new JLabel(jobListID[i][j]);
+               jp.add(labelList[i][j]);
+               j = 0;
 
                btnList[i] = new JButton("Details");
                jp.add(btnList[i]);

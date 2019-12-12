@@ -103,7 +103,7 @@ private class viewJobListener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
+        Company_jobs CJ =new Company_jobs();
     }
 }
 

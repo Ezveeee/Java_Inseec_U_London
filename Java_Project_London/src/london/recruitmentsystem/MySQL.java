@@ -679,7 +679,7 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             jobList = new String[numberOfRows][4];
+             jobList = new String[numberOfRows][3];
              
              try{ //add job name
                  while(rs.next()){
@@ -692,11 +692,11 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT name FROM Company WHERE id IN  '"+ Account.getLoggedID() +"';";
+             query = "SELECT name FROM Job WHERE company LIKE  '"+ Account.getLoggedID() +"';";
              rs = MySQL.stmt.executeQuery(query);
              try{ //add company name
                  while(rs.next()){
-                    jobList[rs.getRow()-1][1] = rs.getString(1);
+                    jobList[rs.getRow()-1][0] = rs.getString(1);
                  }
              }
              catch(SQLException e){
@@ -705,11 +705,11 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE company IN '"+ Account.getLoggedID() +"');";
+             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE company LIKE '"+ Account.getLoggedID() +"');";
              rs = MySQL.stmt.executeQuery(query);
              try{ //add city name
                  while(rs.next()){
-                    jobList[rs.getRow()-1][2] = rs.getString(1);
+                    jobList[rs.getRow()-1][1] = rs.getString(1);
                 }
              }
              catch(SQLException e){
@@ -718,11 +718,11 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE company IN '"+ Account.getLoggedID() +"');";
+             query = "SELECT country FROM Address WHERE id LIKE (SELECT address FROM Job WHERE company LIKE '"+ Account.getLoggedID() +"');";
              rs = MySQL.stmt.executeQuery(query);
              try{ //add country name
                  while(rs.next()){
-                    jobList[rs.getRow()-1][3] = rs.getString(1);
+                    jobList[rs.getRow()-1][2] = rs.getString(1);
                 }
              }
              catch(SQLException e){
