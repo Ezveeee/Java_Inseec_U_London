@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 public class Main_page_Company extends JFrame {
     
     final private JButton persInf = new JButton("Modify my personnal information");
-    final private JButton removeAJob = new JButton("Remove a job");
     final private JButton viewJob = new JButton("View my job");
     final private JButton postAJob = new JButton("Post a job");
     final private JButton logout = new JButton("Logout");
@@ -39,14 +38,12 @@ public class Main_page_Company extends JFrame {
         persInf.addActionListener(new bt1Listener());
         bt2.addActionListener(new bt2Listener());
         postAJob.addActionListener(new addJobListener());
-        removeAJob.addActionListener(new removeJobListener());
         viewJob.addActionListener(new viewJobListener());
         logout.addActionListener(new logoutListener());
         
         persInf.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2, 250, 50);
         postAJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+75, 250, 50);
-        removeAJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+150, 250, 50);
-        viewJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+225, 250, 50);
+        viewJob.setBounds(9*LARGEUR_SCREEN/10-250/2, HAUTEUR_SCREEN/10-50/2+150, 250, 50);
         bt2.setBounds(LARGEUR_SCREEN/2+100, 3*HAUTEUR_SCREEN/5-30, 70, 20);
         search.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-30, 200, 20);
         Search_txt.setBounds(LARGEUR_SCREEN/2-200/2, 3*HAUTEUR_SCREEN/5-50, 200, 20);
@@ -54,7 +51,6 @@ public class Main_page_Company extends JFrame {
         
         jp.add(logout);
         jp.add(postAJob);
-        jp.add(removeAJob);
         jp.add(viewJob);
         jp.add(bt2);
         jp.add(Search_txt);
