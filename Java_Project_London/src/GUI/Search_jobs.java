@@ -37,7 +37,7 @@ public class Search_jobs extends JFrame
        
        String[][] jobList = MySQL.getJobList(user_search);
 
-       jp.setLayout(new GridLayout(jobList[0].length, 5));
+       setLayout(new GridLayout(jobList[0].length, 5));
        
        int i = 0;
        JLabel temp = new JLabel();
