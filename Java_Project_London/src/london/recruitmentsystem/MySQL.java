@@ -759,4 +759,64 @@ public class MySQL {
         }	
     return jobList;
     }
+    
+    public static int[] getAppliedJobIDList(){
+        int numberOfRows = -1;
+         try{
+             stmt = MySQL.conn.createStatement();
+             query = "SELECT job FROM Applied WHERE jobseeker=" + Account.getLoggedID() + ";";
+             rs = MySQL.stmt.executeQuery(query);
+             try{
+                  rs.last();
+                  numberOfRows = rs.getRow();
+                  rs.beforeFirst();
+             }
+             catch (SQLException e)
+             {
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> rs.last(), rs.getRow(), rs.beforeFirst() : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             int[] jobList = new int[numberOfRows];
+             
+             try{ //add job name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1] = rs.getInt(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add job name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             return jobList;
+        }
+        
+        catch(SQLException e){
+            int[]jobList = null;
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            return jobList;
+        }
+        
+        finally{ //realease resources
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){}
+                rs = null;
+                }
+            
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){}
+                stmt = null;
+            }
+        }
+    }
 }
