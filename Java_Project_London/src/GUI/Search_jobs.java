@@ -20,10 +20,6 @@ public class Search_jobs extends JFrame
 {
    private final int WINDOW_WIDTH = 400;   // Window width
    private final int WINDOW_HEIGHT = 200;  // Window height
-   private ArrayList<JLabel> jobName = new ArrayList<JLabel>();
-   private ArrayList<JLabel> companyName = new ArrayList<JLabel>();
-   private ArrayList<JLabel> city = new ArrayList<JLabel>();
-   private ArrayList<JLabel> country = new ArrayList<JLabel>();
    private ArrayList<JButton> btn = new ArrayList<JButton>();
    private static String query;
     @SuppressWarnings("OverridableMethodCallInConstructor")
@@ -37,29 +33,30 @@ public class Search_jobs extends JFrame
        
        String[][] jobList = MySQL.getJobList(user_search);
 
-       jp.setLayout(new GridLayout(jobList[0].length, 5));
+       setLayout(new GridLayout(jobList[0].length, 5));
        
        int i = 0;
-       JLabel temp = new JLabel();
+       int j = 0;
+       JLabel[] labelList = new JLabel[jobList.length*4];
        JButton btnDescription = new JButton("Details");
        try{
            while (i < jobList.length)
            {
-               temp.setText(jobList[i][0]);
-               jobName.add(temp);
-               jp.add(jobName.get(i));
+               labelList[j] = new JLabel(jobList[i][0]);
+               jp.add(labelList[j]);
+               ++j;
 
-               temp.setText(jobList[i][1]);
-               companyName.add(temp);
-               jp.add(companyName.get(i));
+               labelList[j] = new JLabel(jobList[i][1]);
+               jp.add(labelList[j]);
+               ++j;
 
-               temp.setText(jobList[i][2]);
-               city.add(temp);
-               jp.add(city.get(i));
+               labelList[j] = new JLabel(jobList[i][2]);
+               jp.add(labelList[j]);
+               ++j;
 
-               temp.setText(jobList[i][3]);
-               country.add(temp);
-               jp.add(country.get(i));
+               labelList[j] = new JLabel(jobList[i][3]);
+               jp.add(labelList[j]);
+               ++j;
 
                btn.add(btnDescription);
                jp.add(btn.get(i));
