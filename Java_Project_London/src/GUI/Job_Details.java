@@ -1,6 +1,8 @@
 package GUI;
-import london.recruitmentsystem.*;
+/*import london.recruitmentsystem.*;
 
+
+import java.sql.SQLException;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,7 +48,7 @@ public class Job_Details extends JFrame{
         lgn.addActionListener(new bt1Listener());
         
         
-            nameJob_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5-50, 200, 20);
+      /*    nameJob_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5-50, 200, 20);
             contractType_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 , 200, 20);
             description_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 100, 200, 20);
             partFull_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 50, 200, 20);
@@ -89,17 +91,9 @@ public class Job_Details extends JFrame{
             setVisible(false);
             dispose();
 
-            String query = "SELECT name FROM Company WHERE id=" + Account.getLoggedID() + ";";
-            String companyName = MySQL.getStringAndExceptionHandling(query);
-            Address job_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
-            DMY startingDate = new DMY(startingDay.getText(), startingMonth.getText(), startingYear.getText());
-            DMY endingDate = new DMY(endingDay.getText(), endingMonth.getText(), endingYear.getText());
-            Job job = new Job(companyName, nameJob.getText(), contractType.getSelectedItem().toString(), job_address,
-                                                description.getText(), salary.getText(), startingDate, endingDate, partFull.getSelectedItem().toString());
-
-            job_address.registerAddress();
-            job.registerJob();
+            
         }
     }
 }
 
+*/
