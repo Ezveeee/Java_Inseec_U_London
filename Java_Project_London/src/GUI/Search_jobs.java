@@ -20,6 +20,8 @@ public class Search_jobs extends JFrame
 {
    private final int WINDOW_WIDTH = 800;   // Window width
    private final int WINDOW_HEIGHT = 400;  // Window height
+   private final int[] jobListID;
+   private final JButton[] btnList; 
    private static String query;
     @SuppressWarnings("OverridableMethodCallInConstructor")
 
@@ -31,7 +33,7 @@ public class Search_jobs extends JFrame
        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        JPanel jp = new JPanel();
        
-       int[] jobListID = MySQL.getJobIDList(user_search);
+       jobListID = MySQL.getJobIDList(user_search);
        String[] jobListCompany = MySQL.getJobCompanyList(user_search);
        String[] jobListCity = MySQL.getJobCityList(user_search);
        String[] jobListCountry = MySQL.getJobCountryList(user_search);
@@ -39,7 +41,7 @@ public class Search_jobs extends JFrame
        jp.setLayout(new GridLayout(jobListID.length, 5));
        
        JLabel[] labelList = new JLabel[jobListID.length*4];
-       JButton[] btnList = new JButton[jobListID.length];
+       btnList = new JButton[jobListID.length];
        try{
            int j=0;
            for (int i = 0; i < jobListID.length; ++i){
@@ -75,13 +77,19 @@ public class Search_jobs extends JFrame
       The main method creates an instance of the GridWindow
       class, causing it to display its window.
    */
-   private class bt1Listener implements ActionListener
+   private class bt1Listener implements ActionListener 
     {
        
        
         public void actionPerformed(ActionEvent e)
         {
-            
+            for (int i=0; i < jobListID.length; ++i)
+            {
+                if (e.getSource() == btnList[i])
+                {
+                    Job_Details JB = new Job_Details(jobListID[i]);
+                }
+            }
         }
     }
    
