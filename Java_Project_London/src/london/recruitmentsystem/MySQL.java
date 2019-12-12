@@ -342,7 +342,6 @@ public class MySQL {
      
      public static String[][] getJobList(String userSearch){
          int numberOfRows = -1;
-         int j =0;
          try{
              stmt = MySQL.conn.createStatement();
              query = "SELECT name FROM Job WHERE name LIKE '%"+ userSearch +"%';";
@@ -362,7 +361,7 @@ public class MySQL {
              String[][] jobList = new String[numberOfRows][4];
              
              try{ //add job name
-                while(rs.next()){
+                 while(rs.next()){
                     jobList[rs.getRow()-1][0] = rs.getString(1);
                 }
              }
