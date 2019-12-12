@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 
 public class Main_page_Company extends JFrame {
     
-    final private JButton persInf = new JButton("Modify my personnal information");
+    final private JButton persInf = new JButton("Modify my personal information");
     final private JButton removeAJob = new JButton("Remove a job");
     final private JButton viewJob = new JButton("View my job");
     final private JButton postAJob = new JButton("Post a job");
