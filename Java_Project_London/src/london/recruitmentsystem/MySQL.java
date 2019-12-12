@@ -112,9 +112,6 @@ public class MySQL {
                 str = rs.getString(1);
             }
             catch(SQLException e){
-                System.out.println("SQLException when calling getString(String query) --> rs.next() & str = rs.getString(1) : " + e.getMessage());
-                System.out.println("SQLState: " + e.getSQLState());
-                System.out.println("VendorError: " + e.getErrorCode());
             }
         }
         
