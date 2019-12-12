@@ -26,11 +26,13 @@ public class Search_jobs extends JFrame
    public Search_jobs(String user_search)
    {
        setTitle("Grid Layout");
+       setLocation (400, 50);
        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        JPanel jp = new JPanel();
        
        String[][] jobList = MySQL.getJobList(user_search);
+       
        jp.setLayout(new GridLayout(jobList.length, 5));
        
        JLabel[] labelList = new JLabel[jobList.length*4];

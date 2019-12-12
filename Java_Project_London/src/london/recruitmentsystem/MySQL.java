@@ -342,6 +342,7 @@ public class MySQL {
      
      public static String[][] getJobList(String userSearch){
          int numberOfRows = -1;
+         int j =0;
          try{
              stmt = MySQL.conn.createStatement();
              query = "SELECT name FROM Job WHERE name LIKE '%"+ userSearch +"%';";
