@@ -340,11 +340,11 @@ public class MySQL {
         return infos;
     }
      
-     public static String[][] getJobList(String userSearch){
+     public static int[] getJobIDList(String userSearch){
          int numberOfRows = -1;
          try{
              stmt = MySQL.conn.createStatement();
-             query = "SELECT name FROM Job WHERE name LIKE '%"+ userSearch +"%';";
+             query = "SELECT id FROM Job WHERE name LIKE '%"+ userSearch +"%';";
              rs = MySQL.stmt.executeQuery(query);
              try{
                   rs.last();
@@ -358,11 +358,11 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             String[][] jobList = new String[numberOfRows][4];
+             int[] jobList = new int[numberOfRows];
              
              try{ //add job name
                  while(rs.next()){
-                    jobList[rs.getRow()-1][0] = rs.getString(1);
+                    jobList[rs.getRow()-1] = rs.getInt(1);
                 }
              }
              catch(SQLException e){
@@ -370,42 +370,63 @@ public class MySQL {
                  System.out.println("SQLState: " + e.getSQLState());
                  System.out.println("VendorError: " + e.getErrorCode());
              }
-             
+             return jobList;
+        }
+        
+        catch(SQLException e){
+            int[]jobList = null;
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            return jobList;
+        }
+        
+        finally{ //realease resources
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){}
+                rs = null;
+                }
+            
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){}
+                stmt = null;
+            }
+        }
+    }
+     
+     public static String[] getJobCompanyList(String userSearch){
+         int numberOfRows = -1;
+         try{
+             stmt = MySQL.conn.createStatement();
              query = "SELECT name FROM Company WHERE id IN (SELECT company FROM Job WHERE name LIKE '%"+ userSearch +"%');";
              rs = MySQL.stmt.executeQuery(query);
-             try{ //add company name
-                 while(rs.next()){
-                    jobList[rs.getRow()-1][1] = rs.getString(1);
-                 }
+             try{
+                  rs.last();
+                  numberOfRows = rs.getRow();
+                  rs.beforeFirst();
              }
-             catch(SQLException e){
-                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+             catch (SQLException e)
+             {
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> rs.last(), rs.getRow(), rs.beforeFirst() : " + e.getMessage());
                  System.out.println("SQLState: " + e.getSQLState());
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
-             rs = MySQL.stmt.executeQuery(query);
-             try{ //add city name
-                 while(rs.next()){
-                    jobList[rs.getRow()-1][2] = rs.getString(1);
-                }
-             }
-             catch(SQLException e){
-                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
-                 System.out.println("SQLState: " + e.getSQLState());
-                 System.out.println("VendorError: " + e.getErrorCode());
-             }
+             String[] jobList = new String[numberOfRows];
              
-             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
-             rs = MySQL.stmt.executeQuery(query);
-             try{ //add country name
+             try{ //add job name
                  while(rs.next()){
-                    jobList[rs.getRow()-1][3] = rs.getString(1);
+                    jobList[rs.getRow()-1] = rs.getString(1);
                 }
              }
              catch(SQLException e){
-                 System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add job name to ResultSet : " + e.getMessage());
                  System.out.println("SQLState: " + e.getSQLState());
                  System.out.println("VendorError: " + e.getErrorCode());
              }
@@ -413,7 +434,127 @@ public class MySQL {
         }
         
         catch(SQLException e){
-            String[][]jobList = null;
+            String[]jobList = null;
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            return jobList;
+        }
+        
+        finally{ //realease resources
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){}
+                rs = null;
+                }
+            
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){}
+                stmt = null;
+            }
+        }
+    }
+     
+     public static String[] getJobCityList(String userSearch){
+         int numberOfRows = -1;
+         try{
+             stmt = MySQL.conn.createStatement();
+             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             rs = MySQL.stmt.executeQuery(query);
+             try{
+                  rs.last();
+                  numberOfRows = rs.getRow();
+                  rs.beforeFirst();
+             }
+             catch (SQLException e)
+             {
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> rs.last(), rs.getRow(), rs.beforeFirst() : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             String[] jobList = new String[numberOfRows];
+             
+             try{ //add job name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add job name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             return jobList;
+        }
+        
+        catch(SQLException e){
+            String[]jobList = null;
+            System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            return jobList;
+        }
+        
+        finally{ //realease resources
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){}
+                rs = null;
+                }
+            
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){}
+                stmt = null;
+            }
+        }
+    }
+     
+     public static String[] getJobCountryList(String userSearch){
+         int numberOfRows = -1;
+         try{
+             stmt = MySQL.conn.createStatement();
+             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             rs = MySQL.stmt.executeQuery(query);
+             try{
+                  rs.last();
+                  numberOfRows = rs.getRow();
+                  rs.beforeFirst();
+             }
+             catch (SQLException e)
+             {
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> rs.last(), rs.getRow(), rs.beforeFirst() : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             
+             String[] jobList = new String[numberOfRows];
+             
+             try{ //add job name
+                 while(rs.next()){
+                    jobList[rs.getRow()-1] = rs.getString(1);
+                }
+             }
+             catch(SQLException e){
+                 System.out.println("SQLException when calling getJobList(String userSearch) --> add job name to ResultSet : " + e.getMessage());
+                 System.out.println("SQLState: " + e.getSQLState());
+                 System.out.println("VendorError: " + e.getErrorCode());
+             }
+             return jobList;
+        }
+        
+        catch(SQLException e){
+            String[]jobList = null;
             System.out.println("SQLException when calling getInt(String query) --> stmt.executeQuery(query) : " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());

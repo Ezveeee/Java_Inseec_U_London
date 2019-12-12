@@ -31,28 +31,31 @@ public class Search_jobs extends JFrame
        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        JPanel jp = new JPanel();
        
-       String[][] jobList = MySQL.getJobList(user_search);
+       int[] jobListID = MySQL.getJobIDList(user_search);
+       String[] jobListCompany = MySQL.getJobCompanyList(user_search);
+       String[] jobListCity = MySQL.getJobCityList(user_search);
+       String[] jobListCountry = MySQL.getJobCountryList(user_search);
        
-       jp.setLayout(new GridLayout(jobList.length, 5));
+       jp.setLayout(new GridLayout(jobListID.length, 5));
        
-       JLabel[] labelList = new JLabel[jobList.length*4];
-       JButton[] btnList = new JButton[jobList.length];
+       JLabel[] labelList = new JLabel[jobListID.length*4];
+       JButton[] btnList = new JButton[jobListID.length];
        try{
            int j=0;
-           for (int i = 0; i < jobList.length; ++i){
-               labelList[j] = new JLabel(jobList[i][0]);
+           for (int i = 0; i < jobListID.length; ++i){
+               labelList[j] = new JLabel(Integer.toString(jobListID[i]));
                jp.add(labelList[j]);
                ++j;
 
-               labelList[j] = new JLabel(jobList[i][1]);
+               labelList[j] = new JLabel(jobListCompany[i]);
                jp.add(labelList[j]);
                ++j;
 
-               labelList[j] = new JLabel(jobList[i][2]);
+               labelList[j] = new JLabel(jobListCity[i]);
                jp.add(labelList[j]);
                ++j;
 
-               labelList[j] = new JLabel(jobList[i][3]);
+               labelList[j] = new JLabel(jobListCountry[i]);
                jp.add(labelList[j]);
                ++j;
 

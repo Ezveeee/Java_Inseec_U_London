@@ -95,7 +95,7 @@ private class removeJobListener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        Remove_Job_Screen removeJob = new Remove_Job_Screen();
+        //Remove_Job_Screen removeJob = new Remove_Job_Screen();
     }
 }
 
