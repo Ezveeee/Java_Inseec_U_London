@@ -17,14 +17,10 @@ public class Pers_Inf_Jobseeker extends JFrame{
     final private JTextField e_mail;
     final private JTextField password;
     final private JTextField phone;
-    final private JTextField birthDay;
-    final private JTextField birthMonth;
-    final private JTextField birthYear;
     final private JLabel lastName_txt = new JLabel("Last Name");
     final private JLabel e_mail_txt = new JLabel("E-mail");
     final private JLabel password_txt = new JLabel("Password");
     final private JLabel phone_txt = new JLabel("Phone Number");
-    final private JLabel birthDate_txt = new JLabel("Birth Date (dd/mm/yyyy)");
     final private JTextField street;
     final private JTextField postcode;
     final private JTextField city;
@@ -41,6 +37,7 @@ public class Pers_Inf_Jobseeker extends JFrame{
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Pers_Inf_Jobseeker()
     {
+        String[] infos = MySQL.getLoggedInJobseekerInfo();
         setTitle("Modify your Personnal Information");
         //this.setLocation(150,75);
         setLocation(50,50);
@@ -50,18 +47,15 @@ public class Pers_Inf_Jobseeker extends JFrame{
         JPanel jp = new JPanel();
         jp.setLayout(null);
         
-        lastName = new JTextField(10);
-        firstName = new JTextField(10);
-        e_mail = new JTextField(10);
-        password = new JTextField(10);
-        phone = new JTextField(10);
-        birthDay = new JTextField(2);
-        birthMonth = new JTextField(2);
-        birthYear = new JTextField(4);
-        street = new JTextField(10);
-        postcode = new JTextField(10);             
-        city = new JTextField(10);
-        country = new JTextField(10);
+        lastName = new JTextField(infos[11]);
+        firstName = new JTextField(infos[10]);
+        e_mail = new JTextField(infos[4]);
+        password = new JTextField(infos[5]);
+        phone = new JTextField(infos[6]);
+        street = new JTextField(infos[0]);
+        postcode = new JTextField(infos[1]);             
+        city = new JTextField(infos[2]);
+        country = new JTextField(infos[3]);
 
         
         lgn.addActionListener(new bt1Listener());
@@ -71,10 +65,6 @@ public class Pers_Inf_Jobseeker extends JFrame{
             firstName_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5-50, 200, 20);
             lastName.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 +20, 200, 20);
             lastName_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5, 200, 20);
-            birthDate_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 50, 200, 20);
-            birthDay.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 70, 20, 20);
-            birthMonth.setBounds(3*LARGEUR_SCREEN/10-80, HAUTEUR_SCREEN/5 + 70, 20, 20);
-            birthYear.setBounds(3*LARGEUR_SCREEN/10-60, HAUTEUR_SCREEN/5 + 70, 35, 20);
             e_mail_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 150, 200, 20);
             e_mail.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 170, 200, 20);
             password_txt.setBounds(3*LARGEUR_SCREEN/10-200/2, HAUTEUR_SCREEN/5 + 200, 200, 20);
@@ -104,10 +94,6 @@ public class Pers_Inf_Jobseeker extends JFrame{
             jp.add(password);
             jp.add(e_mail);
             jp.add(e_mail_txt);
-            jp.add(birthYear);
-            jp.add(birthMonth);
-            jp.add(birthDay);
-            jp.add(birthDate_txt);
             jp.add(lastName_txt);
             jp.add(firstName_txt);
             jp.add(lastName);
@@ -129,9 +115,21 @@ private class bt1Listener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        setVisible(false);
-        dispose();
-               
+        
+        
+         if(!(street.getText().isBlank() || postcode.getText().isBlank() || city.getText().isBlank() || country.getText().isBlank()
+                    || e_mail.getText().isBlank() || password.getText().isBlank() || firstName.getText().isBlank() || lastName.getText().isBlank())){
+             
+             Jobseeker.modifyPersonalInformation(e_mail.getText(), password.getText(), phone.getText(), 
+                                                                                        street.getText(), postcode.getText(), city.getText(), country.getText(), firstName.getText(), lastName.getText());
+             
+             setVisible(false);
+             dispose();
+         }
+         else{
+             // message d'erreur "Please enter all mandatory fields"
+         }
+        
     }
 }
 }

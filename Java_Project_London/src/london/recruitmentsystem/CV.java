@@ -53,55 +53,38 @@ public class CV {
         String educationQuery = "education=NULL, ";
         String workExperienceQuery = "workExperience=NULL, ";
         String skillsQuery = "skills=NULL";
-        
         try{
             if(!overview.isBlank()){
                 overviewQuery = "overview='" + overview + "', ";
-            }
-            else{
-                    System.out.println("No CV overview");
             }
         }
         catch(Exception e){
             System.out.println("CV overview : " + e.getMessage());
         }
-        
         try{
             if(!education.isBlank()){
                 educationQuery = "education='" + education + "', ";
-            }
-            else{
-                    System.out.println("No CV education");
             }
         }
         catch(Exception e){
             System.out.println("CV education : " + e.getMessage());
         }
-        
         try{
             if(!workExperience.isBlank()){
                 workExperienceQuery = "workExperience='" + workExperience + "', ";
-            }
-            else{
-                    System.out.println("No CV work experience");
             }
         }
         catch(Exception e){
             System.out.println("CV work experience : " + e.getMessage());
         }
-        
         try{
             if(!skills.isBlank()){
                 skillsQuery = "skills='" + skills + "'";
-            }
-            else{
-                    System.out.println("No CV skills");
             }
         }
         catch(Exception e){
             System.out.println("CV skills : " + e.getMessage());
         }
-        
         query = "UPDATE  CV SET " + overviewQuery + educationQuery + workExperienceQuery + skillsQuery + " WHERE id=(SELECT cv FROM Jobseeker WHERE id=" + Account.getLoggedID() + ");";
         MySQL.insertDataAndExceptionHandling(query);
     }

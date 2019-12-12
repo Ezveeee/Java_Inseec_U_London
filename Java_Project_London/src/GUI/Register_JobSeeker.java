@@ -115,18 +115,26 @@ public class Register_JobSeeker extends JFrame{
     {
         public void actionPerformed(ActionEvent e)
         {
-            setVisible(false);
-            dispose();
+            if(!(street.getText().isBlank() || postcode.getText().isBlank() || city.getText().isBlank() || country.getText().isBlank()
+                    || e_mail.getText().isBlank() || password.getText().isBlank() || birthDay.getText().isBlank() || birthMonth.getText().isBlank() || birthYear.getText().isBlank()
+                    || firstName.getText().isBlank() || lastName.getText().isBlank())){
+                
+                Address jobseeker_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
+                Account jobseeker_account = new Account(e_mail.getText(), password.getText(), phone.getText(), jobseeker_address);
+                DMY birthDate = new DMY(birthDay.getText(), birthMonth.getText(), birthYear.getText());
+                CV jobseeker_cv = new CV(birthDate, firstName.getText(), lastName.getText());
+                Jobseeker jobseeker = new Jobseeker(jobseeker_account, jobseeker_cv);
 
-            Address jobseeker_address = new Address(street.getText(), postcode.getText(), city.getText(), country.getText());
-            Account jobseeker_account = new Account(e_mail.getText(), password.getText(), phone.getText(), jobseeker_address);
-            DMY birthDate = new DMY(birthDay.getText(), birthMonth.getText(), birthYear.getText());
-            CV jobseeker_cv = new CV(birthDate, firstName.getText(), lastName.getText());
-            Jobseeker jobseeker = new Jobseeker(jobseeker_account, jobseeker_cv);
-            
-            jobseeker.registerJobseeker();
+                jobseeker.registerJobseeker();
 
-            Login lng = new Login();
+                Login lng = new Login();
+                
+                setVisible(false);
+                dispose();
+            }
+            else{
+             // message d'erreur "Please enter all mandatory fields"
+            }
         }
 
     }

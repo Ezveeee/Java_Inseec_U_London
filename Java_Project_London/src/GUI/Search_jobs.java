@@ -39,7 +39,7 @@ public class Search_jobs extends JFrame
        
        int i = 0;
        JLabel temp = new JLabel();
-       while (i < jobList.length)
+       while (i < jobList[0].length)
        {
            temp.setText(jobList[i][0]);
            jobName.set(i, temp);
@@ -71,12 +71,12 @@ public class Search_jobs extends JFrame
    */
    private class bt1Listener implements ActionListener
     {
+       
+       
         public void actionPerformed(ActionEvent e)
         {
-                for (int i = 0; i < 
-                {
-                    
-                }
+            
         }
     }
+   
 }

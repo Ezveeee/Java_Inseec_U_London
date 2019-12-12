@@ -31,7 +31,7 @@ public class CV_Screen extends JFrame {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public CV_Screen()
     {
-        String[] infos = MySQL.getLoggedInCVInfos();
+        String[] infos = MySQL.getLoggedInCVInfo();
         overview = new JTextArea(infos[0]);
         education = new JTextArea(infos[1]);
         workExperience = new JTextArea(infos[2]);

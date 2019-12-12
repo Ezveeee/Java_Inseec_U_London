@@ -41,11 +41,11 @@ public class Job {
                 this.salary = Integer.parseInt(salary);
             }
             
-            if(!(startingDate.getDay().isBlank() && startingDate.getMonth().isBlank() && startingDate.getYear().isBlank())){
+            if(!(startingDate.getDay().isBlank() || startingDate.getMonth().isBlank() || startingDate.getYear().isBlank())){
                 this.startingDate = new DMY(startingDate);
             }
             
-            if(!(endingDate.getDay().isBlank() && endingDate.getMonth().isBlank() && endingDate.getYear().isBlank() || startingDate.getDay().isBlank() && startingDate.getMonth().isBlank() && startingDate.getYear().isBlank())){
+            if(!(endingDate.getDay().isBlank() || endingDate.getMonth().isBlank() || endingDate.getYear().isBlank() || startingDate.getDay().isBlank() || startingDate.getMonth().isBlank() || startingDate.getYear().isBlank())){
                 this.endingDate = new DMY(endingDate);
             }
             
