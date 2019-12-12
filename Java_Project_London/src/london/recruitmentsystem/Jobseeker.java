@@ -58,8 +58,9 @@ public class Jobseeker {
     }
     
     
-    public void applyJob(){
-        
+    public void applyJob(int jobID){
+        query = "INSERT INTO Applied VALUES (" + jobID + ", " + Account.getLoggedID() + ";";
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     
