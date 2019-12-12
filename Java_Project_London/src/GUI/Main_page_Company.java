@@ -113,7 +113,7 @@ private class logoutListener implements ActionListener
     {
         setVisible(false);
         dispose();
-        Login lng = new Login();
+        Login_screen lng = new Login_screen();
     }
 }
 

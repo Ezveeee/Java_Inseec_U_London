@@ -82,7 +82,6 @@ private class jobListener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-       
         
     }
 }
@@ -104,7 +103,7 @@ private class logoutListener implements ActionListener
     {
         setVisible(false);
         dispose();
-        Login lng = new Login();
+        Login_screen lng = new Login_screen();
     }
 }
 
