@@ -43,7 +43,7 @@ public class Address{
     // Methods    
     public void registerAddress(){
         query = "INSERT INTO Address VALUES ("+ this.addressID + ", '" + this.street + "', '" + this.postCode + "', '" + this.city + "', '" + this.country + "');"; 
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     

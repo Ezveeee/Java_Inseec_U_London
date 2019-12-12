@@ -13,7 +13,7 @@ public class Main_page_Jobseeker extends JFrame {
     
     final private JButton cv = new JButton("Modify my CV");
     final private JButton persInf = new JButton("Modify my personal information");
-    final private JButton job = new JButton("View my Job Requests");
+    final private JButton job = new JButton("View my job requests");
     final private JButton bt2 = new JButton("🔎");
     final private JTextField search = new JTextField(10);
     final private JLabel Search_txt = new JLabel("Search a Job");

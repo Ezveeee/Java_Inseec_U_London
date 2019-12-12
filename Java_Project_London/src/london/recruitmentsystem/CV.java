@@ -45,7 +45,7 @@ public class CV {
     public void registerCV(){
         query = "INSERT INTO CV VALUES (NULL, '" + this.birthDate.getYear() + "-" + this.birthDate.getMonth() + "-" + this.birthDate.getDay() + "', '" + this.firstName + "', '"
                         + this.lastName + "', NULL, NULL, NULL, NULL);";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
     
     public static void modifyCV(String overview, String education, String workExperience, String skills){
@@ -86,7 +86,7 @@ public class CV {
             System.out.println("CV skills : " + e.getMessage());
         }
         query = "UPDATE  CV SET " + overviewQuery + educationQuery + workExperienceQuery + skillsQuery + " WHERE id=(SELECT cv FROM Jobseeker WHERE id=" + Account.getLoggedID() + ");";
-        MySQL.insertDataAndExceptionHandling(query);
+        MySQL.executeUpdateAndExceptionHandling(query);
     }
       
     public int getCVID(){
