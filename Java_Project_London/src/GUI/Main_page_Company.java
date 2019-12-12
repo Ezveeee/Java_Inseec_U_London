@@ -38,7 +38,8 @@ public class Main_page_Company extends JFrame {
         
         persInf.addActionListener(new bt1Listener());
         bt2.addActionListener(new bt2Listener());
-        postAJob.addActionListener(new addJobListener());
+        postAJob.addActionListener(new postJobListener());
+        removeAJob.addActionListener(new removeJobListener());
         viewJob.addActionListener(new viewJobListener());
         logout.addActionListener(new logoutListener());
         
@@ -82,7 +83,7 @@ private class bt2Listener implements ActionListener
     }
 }
 
-private class addJobListener implements ActionListener
+private class postJobListener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
@@ -94,8 +95,7 @@ private class removeJobListener implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
     {
-        
-        
+        Remove_Job_Screen removeJob = new Remove_Job_Screen();
     }
 }
 
