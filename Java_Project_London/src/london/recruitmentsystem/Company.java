@@ -36,16 +36,6 @@ public class Company {
         MySQL.insertDataAndExceptionHandling(query);
     }
     
-    
-    public Account getAccount(){
-        return this.account;
-    }
-    
-    
-    public String getName(){
-        return this.name;
-    }
-    
     public static void modifyPersonalInformation(String email, String password, String telephoneNumber,String street, String postCode, String city, String country, String nameOfTheCompany){
         String telephoneNumberQuery = "telephoneNumber=NULL";
         try{
@@ -66,6 +56,14 @@ public class Company {
         query = "UPDATE Company SET name='" + nameOfTheCompany + "'"
                         + " WHERE id=" + Account.getLoggedID() + ";";
         MySQL.insertDataAndExceptionHandling(query);
+    }
+    
+    public Account getAccount(){
+        return this.account;
+    }
+    
+    public String getName(){
+        return this.name;
     }
     
     public void changeDescription(){
