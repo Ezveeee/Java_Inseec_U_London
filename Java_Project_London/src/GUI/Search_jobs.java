@@ -20,7 +20,6 @@ public class Search_jobs extends JFrame
 {
    private final int WINDOW_WIDTH = 400;   // Window width
    private final int WINDOW_HEIGHT = 200;  // Window height
-   private ArrayList<JButton> btn = new ArrayList<JButton>();
    private static String query;
     @SuppressWarnings("OverridableMethodCallInConstructor")
 
@@ -32,16 +31,13 @@ public class Search_jobs extends JFrame
        JPanel jp = new JPanel();
        
        String[][] jobList = MySQL.getJobList(user_search);
-
-       setLayout(new GridLayout(jobList[0].length, 5));
+       jp.setLayout(new GridLayout(jobList.length, 5));
        
-       int i = 0;
-       int j = 0;
        JLabel[] labelList = new JLabel[jobList.length*4];
-       JButton btnDescription = new JButton("Details");
+       JButton[] btnList = new JButton[jobList.length];
        try{
-           while (i < jobList.length)
-           {
+           int j=0;
+           for (int i = 0; i < jobList.length; ++i){
                labelList[j] = new JLabel(jobList[i][0]);
                jp.add(labelList[j]);
                ++j;
@@ -58,11 +54,9 @@ public class Search_jobs extends JFrame
                jp.add(labelList[j]);
                ++j;
 
-               btn.add(btnDescription);
-               jp.add(btn.get(i));
-               btn.get(i).addActionListener(new bt1Listener());
-
-               ++i;
+               btnList[i] = new JButton("Details");
+               jp.add(btnList[i]);
+               btnList[i].addActionListener(new bt1Listener());
            }
        }
        catch(Exception e){

@@ -359,8 +359,9 @@ public class MySQL {
              }
              
              String[][] jobList = new String[numberOfRows][4];
+             
              try{ //add job name
-                 while(rs.next()){
+                while(rs.next()){
                     jobList[rs.getRow()-1][0] = rs.getString(1);
                 }
              }
@@ -370,12 +371,12 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT name FROM Company WHERE id=(SELECT company FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             query = "SELECT name FROM Company WHERE id IN (SELECT company FROM Job WHERE name LIKE '%"+ userSearch +"%');";
              rs = MySQL.stmt.executeQuery(query);
              try{ //add company name
                  while(rs.next()){
                     jobList[rs.getRow()-1][1] = rs.getString(1);
-                }
+                 }
              }
              catch(SQLException e){
                  System.out.println("SQLException when calling getJobList(String userSearch) --> add company name to ResultSet : " + e.getMessage());
@@ -383,7 +384,7 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT city FROM Address WHERE id=(SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             query = "SELECT city FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
              rs = MySQL.stmt.executeQuery(query);
              try{ //add city name
                  while(rs.next()){
@@ -396,7 +397,7 @@ public class MySQL {
                  System.out.println("VendorError: " + e.getErrorCode());
              }
              
-             query = "SELECT country FROM Address WHERE id=(SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
+             query = "SELECT country FROM Address WHERE id IN (SELECT address FROM Job WHERE name LIKE '%"+ userSearch +"%');";
              rs = MySQL.stmt.executeQuery(query);
              try{ //add country name
                  while(rs.next()){
