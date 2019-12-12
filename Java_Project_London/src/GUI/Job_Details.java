@@ -92,7 +92,6 @@ public class Job_Details extends JFrame{
         public void actionPerformed(ActionEvent e)
         {
             
-
         }
     }
     
