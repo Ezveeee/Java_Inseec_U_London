@@ -39,28 +39,34 @@ public class Search_jobs extends JFrame
 
        int i = 0;
        JLabel temp = new JLabel();
-       while (i < jobList[0].length)
-       {
-           temp.setText(jobList[i][0]);
-           jobName.set(i, temp);
-           add(jobName.get(i));
+       
+       try{
+           while (i < jobList[0].length)
+           {
+               temp.setText(jobList[i][0]);
+               jobName.set(i, temp);
+               add(jobName.get(i));
 
-           temp.setText(jobList[i][1]);
-           companyName.set(i, temp);
-           add(companyName.get(i));
+               temp.setText(jobList[i][1]);
+               companyName.set(i, temp);
+               add(companyName.get(i));
 
-           temp.setText(jobList[i][2]);
-           city.set(i, temp);
-           add(city.get(i));
+               temp.setText(jobList[i][2]);
+               city.set(i, temp);
+               add(city.get(i));
 
-           temp.setText(jobList[i][3]);
-           country.set(i, temp);
-           add(country.get(i));
+               temp.setText(jobList[i][3]);
+               country.set(i, temp);
+               add(country.get(i));
 
-           add(btn.get(i));
-           btn.get(i).addActionListener(new bt1Listener());
+               add(btn.get(i));
+               btn.get(i).addActionListener(new bt1Listener());
 
-           ++i;
+               ++i;
+           }
+       }
+       catch(Exception e){
+           System.out.println("Can't loop through jobList :" + e);
        }
       setVisible(true);
    }
